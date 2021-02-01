@@ -1,23 +1,16 @@
 {
-  "files": {
-    "main.css": "/static/css/main.ea1455b2.chunk.css",
-    "main.js": "/static/js/main.679339eb.chunk.js",
-    "main.js.map": "/static/js/main.679339eb.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.253f7e55.js",
-    "runtime-main.js.map": "/static/js/runtime-main.253f7e55.js.map",
-    "static/js/2.b43169b2.chunk.js": "/static/js/2.b43169b2.chunk.js",
-    "static/js/2.b43169b2.chunk.js.map": "/static/js/2.b43169b2.chunk.js.map",
-    "static/js/3.a8eeed96.chunk.js": "/static/js/3.a8eeed96.chunk.js",
-    "static/js/3.a8eeed96.chunk.js.map": "/static/js/3.a8eeed96.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.ea1455b2.chunk.css.map": "/static/css/main.ea1455b2.chunk.css.map",
-    "static/js/2.b43169b2.chunk.js.LICENSE.txt": "/static/js/2.b43169b2.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/static/media/logo.6ce24c58.svg"
-  },
-  "entrypoints": [
-    "static/js/runtime-main.253f7e55.js",
-    "static/js/2.b43169b2.chunk.js",
-    "static/css/main.ea1455b2.chunk.css",
-    "static/js/main.679339eb.chunk.js"
-  ]
+  "main.css": "/static/css/main.97ee6477.chunk.css",
+  "main.js": "/static/js/main.7a2b9674.chunk.js",
+  "main.js.map": "/static/js/main.7a2b9674.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.3511b81a.js",
+  "runtime~main.js.map": "/static/js/runtime~main.3511b81a.js.map",
+  "static/js/2.98051120.chunk.js": "/static/js/2.98051120.chunk.js",
+  "static/js/2.98051120.chunk.js.map": "/static/js/2.98051120.chunk.js.map",
+  "static/js/3.429d8ae9.chunk.js": "/static/js/3.429d8ae9.chunk.js",
+  "static/js/3.429d8ae9.chunk.js.map": "/static/js/3.429d8ae9.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.a2f0f78d67c1116b20f927d4d651c565.js": "/precache-manifest.a2f0f78d67c1116b20f927d4d651c565.js",
+  "service-worker.js": "/service-worker.js",
+  "static/css/main.97ee6477.chunk.css.map": "/static/css/main.97ee6477.chunk.css.map",
+  "static/media/logo.svg": "/static/media/logo.06e73328.svg"
 }
