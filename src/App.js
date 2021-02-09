@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-
+          /**Fix this so you can refresh the page */
           <Route path='/' exact component={Home}/>
           <Route path='/about-me' component={AboutMe} />
           <Route path='/portfolio' component={Portfolio} />
