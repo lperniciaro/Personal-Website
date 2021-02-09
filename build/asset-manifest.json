@@ -1,7 +1,7 @@
 {
-  "main.css": "/~perniciaro.lucian/static/css/main.97ee6477.chunk.css",
-  "main.js": "/~perniciaro.lucian/static/js/main.6380035d.chunk.js",
-  "main.js.map": "/~perniciaro.lucian/static/js/main.6380035d.chunk.js.map",
+  "main.css": "/~perniciaro.lucian/static/css/main.381532d3.chunk.css",
+  "main.js": "/~perniciaro.lucian/static/js/main.b9d80878.chunk.js",
+  "main.js.map": "/~perniciaro.lucian/static/js/main.b9d80878.chunk.js.map",
   "runtime~main.js": "/~perniciaro.lucian/static/js/runtime~main.daf5a627.js",
   "runtime~main.js.map": "/~perniciaro.lucian/static/js/runtime~main.daf5a627.js.map",
   "static/js/2.98051120.chunk.js": "/~perniciaro.lucian/static/js/2.98051120.chunk.js",
@@ -9,8 +9,9 @@
   "static/js/3.429d8ae9.chunk.js": "/~perniciaro.lucian/static/js/3.429d8ae9.chunk.js",
   "static/js/3.429d8ae9.chunk.js.map": "/~perniciaro.lucian/static/js/3.429d8ae9.chunk.js.map",
   "index.html": "/~perniciaro.lucian/index.html",
-  "precache-manifest.a0142c4b92e7abbcd8044d1dc3bac9ed.js": "/~perniciaro.lucian/precache-manifest.a0142c4b92e7abbcd8044d1dc3bac9ed.js",
+  "precache-manifest.ad63716dc7649610184b3bc6a120efec.js": "/~perniciaro.lucian/precache-manifest.ad63716dc7649610184b3bc6a120efec.js",
   "service-worker.js": "/~perniciaro.lucian/service-worker.js",
-  "static/css/main.97ee6477.chunk.css.map": "/~perniciaro.lucian/static/css/main.97ee6477.chunk.css.map",
-  "static/media/logo.svg": "/~perniciaro.lucian/static/media/logo.06e73328.svg"
+  "static/css/main.381532d3.chunk.css.map": "/~perniciaro.lucian/static/css/main.381532d3.chunk.css.map",
+  "static/media/logo.svg": "/~perniciaro.lucian/static/media/logo.06e73328.svg",
+  "static/media/HeroSection.css": "/~perniciaro.lucian/static/media/zach.4d9d3142.jpg"
 }
