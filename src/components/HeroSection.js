@@ -7,9 +7,8 @@ import '../App.css';
 function HeroSection() {
     return (
         <div className='hero-container'>
-            <video src="/vidoes/video-2.mp4" autoPlay loop muted /> 
-            <h1>SAMPLE TEXT</h1>
-            <p>SAMPLE TEXT</p>
+            <h1>Lucian Perniciaro</h1>
+            <p>Texas A&M University</p>
             <div className="hero-btns">
                 <Button className='btns' buttonStyle='btn--outline' 
                 buttonSize='btn--large'>Button 1</Button>
