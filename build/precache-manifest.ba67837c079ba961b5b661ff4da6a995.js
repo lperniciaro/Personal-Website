@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/~perniciaro.lucian/static/js/runtime~main.daf5a627.js"
   },
   {
-    "revision": "a8973c8f4518dda99346",
-    "url": "/~perniciaro.lucian/static/js/main.b9d80878.chunk.js"
+    "revision": "c51efb7acc3d8c02ffa9",
+    "url": "/~perniciaro.lucian/static/js/main.3c9dcbcd.chunk.js"
   },
   {
     "revision": "cea2cb00e4c73111dfd8",
@@ -24,11 +24,11 @@ self.__precacheManifest = [
     "url": "/~perniciaro.lucian/static/js/2.98051120.chunk.js"
   },
   {
-    "revision": "a8973c8f4518dda99346",
+    "revision": "c51efb7acc3d8c02ffa9",
     "url": "/~perniciaro.lucian/static/css/main.381532d3.chunk.css"
   },
   {
-    "revision": "d5144925cb197755ef9bbdfc4519d047",
+    "revision": "d37f160f184f79bf7d0f4c0bf0676bc3",
     "url": "/~perniciaro.lucian/index.html"
   }
 ];
