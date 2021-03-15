@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/~perniciaro.lucian/static/css/main.0f18eee5.chunk.css",
-    "main.js": "/~perniciaro.lucian/static/js/main.da39faf0.chunk.js",
-    "main.js.map": "/~perniciaro.lucian/static/js/main.da39faf0.chunk.js.map",
+    "main.js": "/~perniciaro.lucian/static/js/main.75659e05.chunk.js",
+    "main.js.map": "/~perniciaro.lucian/static/js/main.75659e05.chunk.js.map",
     "runtime-main.js": "/~perniciaro.lucian/static/js/runtime-main.2d0e67b1.js",
     "runtime-main.js.map": "/~perniciaro.lucian/static/js/runtime-main.2d0e67b1.js.map",
     "static/css/2.d6cc4a3f.chunk.css": "/~perniciaro.lucian/static/css/2.d6cc4a3f.chunk.css",
@@ -23,6 +23,6 @@
     "static/css/2.d6cc4a3f.chunk.css",
     "static/js/2.9caac0a5.chunk.js",
     "static/css/main.0f18eee5.chunk.css",
-    "static/js/main.da39faf0.chunk.js"
+    "static/js/main.75659e05.chunk.js"
   ]
 }

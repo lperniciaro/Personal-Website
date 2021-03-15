@@ -33,7 +33,7 @@ function Cards() {
                 <div className="cards__wrapper">
                     <ul className="cards__items">
                         <CardItem 
-                        src='LedCubeComplete.png'
+                        src='LEDCubeComplete.png'
                         text="It's exactly what it sounds like"
                         label='8x8x8 LED Cube'
                         path='/~perniciaro.lucian/ledcube'
