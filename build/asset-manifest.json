@@ -1,24 +1,28 @@
 {
   "files": {
-    "main.css": "/~perniciaro.lucian/static/css/main.dfb8ef3e.chunk.css",
-    "main.js": "/~perniciaro.lucian/static/js/main.88fba499.chunk.js",
-    "main.js.map": "/~perniciaro.lucian/static/js/main.88fba499.chunk.js.map",
-    "runtime-main.js": "/~perniciaro.lucian/static/js/runtime-main.17480e91.js",
-    "runtime-main.js.map": "/~perniciaro.lucian/static/js/runtime-main.17480e91.js.map",
-    "static/js/2.aa3c551d.chunk.js": "/~perniciaro.lucian/static/js/2.aa3c551d.chunk.js",
-    "static/js/2.aa3c551d.chunk.js.map": "/~perniciaro.lucian/static/js/2.aa3c551d.chunk.js.map",
-    "static/js/3.ba8547b1.chunk.js": "/~perniciaro.lucian/static/js/3.ba8547b1.chunk.js",
-    "static/js/3.ba8547b1.chunk.js.map": "/~perniciaro.lucian/static/js/3.ba8547b1.chunk.js.map",
+    "main.css": "/~perniciaro.lucian/static/css/main.0f18eee5.chunk.css",
+    "main.js": "/~perniciaro.lucian/static/js/main.da39faf0.chunk.js",
+    "main.js.map": "/~perniciaro.lucian/static/js/main.da39faf0.chunk.js.map",
+    "runtime-main.js": "/~perniciaro.lucian/static/js/runtime-main.2d0e67b1.js",
+    "runtime-main.js.map": "/~perniciaro.lucian/static/js/runtime-main.2d0e67b1.js.map",
+    "static/css/2.d6cc4a3f.chunk.css": "/~perniciaro.lucian/static/css/2.d6cc4a3f.chunk.css",
+    "static/js/2.9caac0a5.chunk.js": "/~perniciaro.lucian/static/js/2.9caac0a5.chunk.js",
+    "static/js/2.9caac0a5.chunk.js.map": "/~perniciaro.lucian/static/js/2.9caac0a5.chunk.js.map",
+    "static/js/3.27920216.chunk.js": "/~perniciaro.lucian/static/js/3.27920216.chunk.js",
+    "static/js/3.27920216.chunk.js.map": "/~perniciaro.lucian/static/js/3.27920216.chunk.js.map",
     "index.html": "/~perniciaro.lucian/index.html",
-    "static/css/main.dfb8ef3e.chunk.css.map": "/~perniciaro.lucian/static/css/main.dfb8ef3e.chunk.css.map",
-    "static/js/2.aa3c551d.chunk.js.LICENSE.txt": "/~perniciaro.lucian/static/js/2.aa3c551d.chunk.js.LICENSE.txt",
+    "static/css/2.d6cc4a3f.chunk.css.map": "/~perniciaro.lucian/static/css/2.d6cc4a3f.chunk.css.map",
+    "static/css/main.0f18eee5.chunk.css.map": "/~perniciaro.lucian/static/css/main.0f18eee5.chunk.css.map",
+    "static/js/2.9caac0a5.chunk.js.LICENSE.txt": "/~perniciaro.lucian/static/js/2.9caac0a5.chunk.js.LICENSE.txt",
+    "static/media/LEDCube.7a15ed92.mp4": "/~perniciaro.lucian/static/media/LEDCube.7a15ed92.mp4",
     "static/media/logo.6ce24c58.svg": "/~perniciaro.lucian/static/media/logo.6ce24c58.svg",
     "static/media/HeroSection.css": "/~perniciaro.lucian/static/media/zach.2aa4b4d3.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.17480e91.js",
-    "static/js/2.aa3c551d.chunk.js",
-    "static/css/main.dfb8ef3e.chunk.css",
-    "static/js/main.88fba499.chunk.js"
+    "static/js/runtime-main.2d0e67b1.js",
+    "static/css/2.d6cc4a3f.chunk.css",
+    "static/js/2.9caac0a5.chunk.js",
+    "static/css/main.0f18eee5.chunk.css",
+    "static/js/main.da39faf0.chunk.js"
   ]
 }

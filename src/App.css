@@ -60,6 +60,14 @@
     padding-bottom: 50px;
     max-width: 1000px;
   }
+  .paragraph2 {
+    font-size: 20px;
+    display: flex;
+    flex-flow: column;
+    padding-bottom: 50px;
+    max-width: 1000px;
+    align-items: center;
+  }
 
   .paragraphSmall {
     font-size: 10px;
