@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from './Button';
+import { Button2 } from './Button';
 import './HeroSection.css';
 import '../App.css';
 
@@ -11,9 +12,9 @@ function HeroSection() {
             <p>Texas A&M University</p>
             <div className="hero-btns">
                 <Button className='btns' buttonStyle='btn--outline' 
-                buttonSize='btn--large'>Button 1</Button>
-                <Button className='btns' buttonStyle='btn--primary' 
-                buttonSize='btn--large'>Button 2<i className='far fa-play-circle' /></Button>
+                buttonSize='btn--large'>Resume</Button>
+                <Button2 className='btns' buttonStyle='btn--primary' 
+                buttonSize='btn--large'>Project Portfolio</Button2>
             </div>
         </div>
     )

@@ -17,7 +17,7 @@
   }
   
   .services {
-    background-image: url('/images/img-2.jpg');
+
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@
   }
   
   .products {
-    background-image: url('/images/img-1.jpg');
+
     background-position: center;
     background-size: fill;
     background-repeat: no-repeat;
@@ -35,7 +35,7 @@
   }
   
   .sign-up {
-    background-image: url('/images/img-8.jpg');
+
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -61,10 +61,25 @@
     max-width: 1000px;
   }
 
+  .paragraphSmall {
+    font-size: 10px;
+    display: flex;
+    flex-flow: column;
+    padding-bottom: 50px;
+    max-width: 1000px;
+  }
+
   .imgs{
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+
+  .imgsSmall{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 50%;
   }
 
   .pdf{

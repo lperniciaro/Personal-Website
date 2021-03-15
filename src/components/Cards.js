@@ -10,16 +10,45 @@ function Cards() {
                 <div className="cards__wrapper">
                     <ul className="cards__items">
                         <CardItem 
-                        src='images/img-9.jpg'
-                        text='infromation about product'
-                        label='project name'
-                        path='/about-me'
+                        src='Atera2Autotask2.png'
+                        text='Migration of agent to database using REST API'
+                        label='Atera2Autotask'
+                        path='/~perniciaro.lucian/atera2autotask'
                         />
                         <CardItem 
-                        src='images/img-9.jpg'
-                        text='infromation about product'
-                        label='project name'
-                        path='/about-me'
+                        src='ClientChecker.png'
+                        text='Data combing tool to audit software on a network'
+                        label='Client Checker'
+                        path='/~perniciaro.lucian/clientchecker'
+                        />
+                        <CardItem 
+                        src='WakeOnLan.png'
+                        text='Server and client to initialize Wake On LAN request over WAN'
+                        label='WakeOnWan'
+                        path='/~perniciaro.lucian/wakeonwan'
+                        />
+                        
+                    </ul>
+                </div>
+                <div className="cards__wrapper">
+                    <ul className="cards__items">
+                        <CardItem 
+                        src='LedCubeComplete.png'
+                        text="It's exactly what it sounds like"
+                        label='8x8x8 LED Cube'
+                        path='/~perniciaro.lucian/ledcube'
+                        />
+                        <CardItem 
+                        src='PhoneExtender.jpg'
+                        text='A concept for a 5 day phone battery life'
+                        label='Bootleg Battery Extender'
+                        path='/~perniciaro.lucian/dangerbattery'
+                        />
+                        <CardItem 
+                        src='SmartHouse1.png'
+                        text='Model house with bluetooth controlled lighting in each room'
+                        label='Model Smart Home'
+                        path='/~perniciaro.lucian/smarthome'
                         />
                     </ul>
                 </div>
