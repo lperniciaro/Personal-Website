@@ -13,19 +13,19 @@ function Cards() {
                         src='Atera2Autotask2.png'
                         text='Migration of agent to database using REST API'
                         label='Atera2Autotask'
-                        path='/~perniciaro.lucian/atera2autotask'
+                        path='/atera2autotask'
                         />
                         <CardItem 
                         src='ClientChecker.png'
                         text='Data combing tool to audit software on a network'
                         label='Client Checker'
-                        path='/~perniciaro.lucian/clientchecker'
+                        path='/clientchecker'
                         />
                         <CardItem 
                         src='WakeOnLan.png'
                         text='Server and client to initialize Wake On LAN request over WAN'
                         label='WakeOnWan'
-                        path='/~perniciaro.lucian/wakeonwan'
+                        path='/wakeonwan'
                         />
                         
                     </ul>
@@ -36,19 +36,19 @@ function Cards() {
                         src='LEDCubeComplete.png'
                         text="It's exactly what it sounds like"
                         label='8x8x8 LED Cube'
-                        path='/~perniciaro.lucian/ledcube'
+                        path='/ledcube'
                         />
                         <CardItem 
                         src='PhoneExtender.jpg'
                         text='A concept for a 5 day phone battery life'
                         label='Bootleg Battery Extender'
-                        path='/~perniciaro.lucian/dangerbattery'
+                        path='/dangerbattery'
                         />
                         <CardItem 
                         src='SmartHouse1.png'
                         text='Model house with bluetooth controlled lighting in each room'
                         label='Model Smart Home'
-                        path='/~perniciaro.lucian/smarthome'
+                        path='/smarthome'
                         />
                     </ul>
                 </div>
