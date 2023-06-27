@@ -22,13 +22,6 @@ export default function Service() {
                     students and their designs that would need to be printed, and getting those prints done. Essentially I managed a 3D printer farm for a 
                     few weeks. It was pretty fun.
                 </p1>
-                <p1 className='paragraph'>
-                    I have a pretty dissapointing look for volunteer work compared to my peers. Throughout highschool I was obsessed with saving up to afford
-                    university without going into debt, and spent most of my time studying and working. At A&M, I volunteered with the Fischer Engineering Design 
-                    Center, which didn't last very long because I ended up breaking my ankle in a car accident (I love people that run stop signs). I spent a few
-                    months in physical therapy, and right when I was back into shape COVID happened. I'm looking forward to volunteering at the EDC once we 
-                    open back up to full capacity.
-                </p1>
             </div>
         
         </div>

@@ -69,3 +69,64 @@ video {
         width: 100%;
     }
 }
+
+div.polaroid {
+    max-width: 350px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    border-radius: 10px;
+    margin: auto;
+  }
+  
+  div.container {
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+
+  img.imgs{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width:100%;
+    
+   }
+
+.leftdiv{
+    font-size: 20px;
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding-right: 4%;
+}
+
+.rightdiv{
+    margin-top: 0%;
+    margin-left: 50%;
+    height: 100%;
+}
+
+.smallcard{
+    display: block;
+    flex-flow: column;
+    padding-bottom: 50px;
+    padding-left: 15%;
+    padding-right: 15%;
+    text-align: center;
+    overflow:hidden;
+    font-size: 20px;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) 
+ {
+    .smallcard
+    {
+        padding-left: 8%;
+        padding-right: 8%;
+        font-size: 14px; 
+    }
+    .leftdiv{
+        font-size: 12px;
+    }
+ }

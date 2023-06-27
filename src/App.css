@@ -49,16 +49,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.2);
     object-fit: contain;
   }
 
   .paragraph {
-    font-size: 20px;
-    display: flex;
+    font-size: 1vw;
+    display: grid;
     flex-flow: column;
     padding-bottom: 50px;
-    max-width: 1000px;
+    padding-left: 15%;
+    padding-right: 15%;
+    text-align: center;
   }
   .paragraph2 {
     font-size: 20px;
@@ -77,11 +78,7 @@
     max-width: 1000px;
   }
 
-  .imgs{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+
 
   .imgsSmall{
     display: flex;
@@ -96,4 +93,8 @@
     margin: 0 auto;
     background-color: #777;
     display: block;
+  }
+
+  .a{
+    display: inline-block;
   }
