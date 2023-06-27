@@ -109,7 +109,7 @@ div.polaroid {
 .smallcard{
     display: block;
     flex-flow: column;
-    padding-bottom: 50px;
+    padding-bottom: 3%;
     padding-left: 15%;
     padding-right: 15%;
     text-align: center;
@@ -129,4 +129,22 @@ div.polaroid {
     .leftdiv{
         font-size: 12px;
     }
+ }
+
+ @media (max-width: 500px) 
+ {
+    .smallcard
+    {
+        padding-left: 8%;
+        padding-right: 8%;
+        font-size: 12px; 
+    }
+    .leftdiv{
+        font-size: 8px;
+    }
+ }
+
+ h1{
+    padding-top:1%;
+    padding-bottom: 1%;
  }
