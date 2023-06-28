@@ -6,8 +6,8 @@ export default function ClientChecker(){
         <div className='container'>
             <div>
                 <h1 className='about-me'>Client Checker</h1>
-                <p1 className='paragraph'>This project is best described on <a href="https://github.com/lperniciaro/Client-Checker">Github</a>
-                </p1>
+                <div className='smallcard'>This project is best described on <a href="https://github.com/lperniciaro/Client-Checker">Github</a>
+                </div>
                 
             </div>
         </div>

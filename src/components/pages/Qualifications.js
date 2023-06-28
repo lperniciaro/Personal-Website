@@ -5,11 +5,10 @@ export default function Qualifications() {
     return(
         <div className='container'>
             <div>
-                <h1 className='qualifications'>QUALIFICATIONS</h1>
-
+                <h1 className='qualificationsmod'>QUALIFICATIONS</h1>
                 
             </div>
-            <iframe className="pdf" src="ResumeLP.pdf">
+            <iframe className="pdf" src="Files/Resume LP 6.27.pdf">
 
             </iframe>
         </div>
