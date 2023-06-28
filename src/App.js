@@ -23,17 +23,17 @@ function App() {
         <Navbar />
         <Switch>
           /**Fix this so you can refresh the page */
-          <Route path='/~perniciaro.lucian/' exact component={Home}/>
-          <Route path='/~perniciaro.lucian/about-me' component={AboutMe} />
-          <Route path='/~perniciaro.lucian/portfolio' component={Portfolio} />
-          <Route path='/~perniciaro.lucian/qualifications' component={Qualifications} />
-          <Route path='/~perniciaro.lucian/service' component={Service} />
-          <Route path='/~perniciaro.lucian/atera2autotask' component={Atera2Autotask} />
-          <Route path='/~perniciaro.lucian/clientchecker' component={ClientChecker} />
-          <Route path='/~perniciaro.lucian/wakeonwan' component={WakeOnWan} />
-          <Route path='/~perniciaro.lucian/ledcube' component={LEDCube} />
-          <Route path='/~perniciaro.lucian/dangerbattery' component={DangerBattery} />
-          <Route path='/~perniciaro.lucian/smarthome' component={SmartHome} />
+          <Route path='/' exact component={Home}/>
+          <Route path='/about-me' component={AboutMe} />
+          <Route path='/portfolio' component={Portfolio} />
+          <Route path='/qualifications' component={Qualifications} />
+          <Route path='/service' component={Service} />
+          <Route path='/atera2autotask' component={Atera2Autotask} />
+          <Route path='/clientchecker' component={ClientChecker} />
+          <Route path='/wakeonwan' component={WakeOnWan} />
+          <Route path='/ledcube' component={LEDCube} />
+          <Route path='/dangerbattery' component={DangerBattery} />
+          <Route path='/smarthome' component={SmartHome} />
         </Switch>
       </Router>
     </>

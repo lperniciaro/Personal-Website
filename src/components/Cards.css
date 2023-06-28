@@ -1,5 +1,5 @@
 .cards {
-    padding: 4rem;
+    padding: 10px 20px;
     background: #fff;
   }
   
@@ -66,8 +66,10 @@
     font-size: 12px;
     font-weight: 700;
     color: #fff;
-    background-color: #1f98f4;
+    background-color: rgb(26, 23, 23);
     box-sizing: border-box;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
   
   .cards__item__img {

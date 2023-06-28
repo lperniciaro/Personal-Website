@@ -8,7 +8,7 @@ import '../App.css';
 function HeroSection() {
     return (
         <div className='hero-container'>
-            <h1>Lucian Perniciaro</h1>
+            <h1>Lucian Perniciaro IV</h1>
             <p>Texas A&M University</p>
             <div className="hero-btns">
                 <Button className='btns' buttonStyle='btn--outline' 

@@ -9,7 +9,7 @@ const SIZES = ['btn--medium', 'btn--large'];
 export const Button = ({ children, type, onClick, buttonStyle, buttonSize }) => { const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0]; 
 const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize: SIZES[0] 
 return (
-    <Link to='/~perniciaro.lucian/qualifications' className='btn-mobile'>
+    <Link to='/qualifications' className='btn-mobile'>
         <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick={onClick}
@@ -24,7 +24,7 @@ return (
 export const Button2 = ({ children, type, onClick, buttonStyle, buttonSize }) => { const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0]; 
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize: SIZES[0] 
     return (
-        <Link to='/~perniciaro.lucian/portfolio' className='btn-mobile'>
+        <Link to='/portfolio' className='btn-mobile'>
             <button
             className={`btn ${checkButtonStyle} ${checkButtonSize}`}
             onClick={onClick}
