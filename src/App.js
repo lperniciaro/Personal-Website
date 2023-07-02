@@ -14,7 +14,7 @@ import WakeOnWan from './components/pages/project pages/WakeOnWan'
 import LEDCube from './components/pages/project pages/LEDCube'
 import DangerBattery from './components/pages/project pages/DangerBattery'
 import SmartHome from './components/pages/project pages/SmartHome'
-
+import TheServer from './components/pages/project pages/TheServer'
 
 function App() {
   return (
@@ -26,6 +26,7 @@ function App() {
           <Route path='/' exact component={Home}/>
           <Route path='/about-me' component={AboutMe} />
           <Route path='/portfolio' component={Portfolio} />
+          <Route path="/the_server" component={TheServer} />
           <Route path='/qualifications' component={Qualifications} />
           <Route path='/service' component={Service} />
           <Route path='/atera2autotask' component={Atera2Autotask} />

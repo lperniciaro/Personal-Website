@@ -1,9 +1,11 @@
 import React from 'react'
 import '../../App.css'
+import GoToTop from '../../GoToTop';
 
 export default function Service() {
     return (
         <div className='container'>
+            <GoToTop />
             <div>
                 <h1 className='qualifications'>SERVICES</h1>
                 <div className='smallcard'>
