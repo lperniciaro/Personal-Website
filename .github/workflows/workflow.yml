@@ -1,10 +1,11 @@
 # Simple CD
 
- name: push_cd
+name: push_cd
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   build:
