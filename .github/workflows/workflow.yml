@@ -1,6 +1,6 @@
 # Simple CD
 
- name: push_cd
+name: push_cd
 
 on:
   push:
