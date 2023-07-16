@@ -1,9 +1,11 @@
 import React from 'react'
 import '../../../App.css'
+import GoToTop from '../../../GoToTop'
 
 export default function Atera2Autotask(){
     return (
         <div className='container'>
+            <GoToTop />
             <div>
                 <h1 className='about-me'>Atera2Autotask</h1>
                 <div className='smallcard'>Atera2Autotask is a web based application that uses REST APIs to gather data from an agent, Atera, and push the data

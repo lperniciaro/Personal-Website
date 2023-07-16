@@ -3,10 +3,12 @@ import '../../App.css'
 import CardItem from '../CardItem'
 import '../Cards.css';
 import '../HeroSection.css';
+import GoToTop from '../../GoToTop';
 
 export default function AboutMe() {
     return (
         <div className='container'>
+            <GoToTop />
             <div>
                 <h1 className='about-me'>ABOUT ME</h1>
                 <div className='smallcard'>I was born in New Orleans, Louisiana. I moved shortly after to Texas due to hurricane Katrina. As I grew up I had

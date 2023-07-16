@@ -9,12 +9,25 @@ function Cards() {
             <div className="cards__container">
                 <div className="cards__wrapper">
                     <ul className="cards__items">
+
+                        <CardItem 
+                        src='Pics/TheServer.jpg'
+                        text="It's serving you this site right now :D"
+                        label='The Server'
+                        path='/the_server'
+                        />
                         <CardItem 
                         src='Atera2Autotask2.png'
                         text='Migration of agent to database using REST API'
                         label='Atera2Autotask'
                         path='/atera2autotask'
                         />
+                        
+                    </ul>
+                </div>
+                <div className="cards__wrapper">
+                    <ul className="cards__items">
+                        
                         <CardItem 
                         src='ClientChecker.png'
                         text='Data combing tool to audit software on a network'

@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'PT Sans', sans-serif;
+    /* font-family: 'PT Sans', sans-serif; */
   }
   
   .home,
@@ -97,4 +97,15 @@
 
   .a{
     display: inline-block;
+    text-indent: 0;
+  }
+
+  ul.list{
+    text-align: left;
+    list-style-position: inside;
+    padding-left: 5%;
+  }
+
+  h1.the_specs{
+    font-size: larger;
   }

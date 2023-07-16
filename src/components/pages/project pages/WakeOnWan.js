@@ -1,9 +1,11 @@
 import React from 'react'
 import '../../../App.css'
+import GoToTop from '../../../GoToTop'
 
 export default function WakeOnWan(){
     return (
         <div className='container'>
+            <GoToTop />
             <div>
                 <h1 className='about-me'>Wake On Wan</h1>
                 <div className='smallcard'>

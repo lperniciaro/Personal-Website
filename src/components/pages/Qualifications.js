@@ -4,6 +4,7 @@ import '../../App.css'
 export default function Qualifications() {
     return(
         <div className='container'>
+            
             <div>
                 <h1 className='qualificationsmod'>QUALIFICATIONS</h1>
                 
