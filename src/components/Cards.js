@@ -11,6 +11,12 @@ function Cards() {
                     <ul className="cards__items">
 
                         <CardItem 
+                        src='Pics/datadogazure.png'
+                        text="Azure DR triggered by Datadog monitor webhook"
+                        label='Datadog Azure DR'
+                        path='/datadog'
+                        />
+                        <CardItem 
                         src='Pics/TheServer.jpg'
                         text="It's serving you this site right now :D"
                         label='The Server'

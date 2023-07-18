@@ -15,6 +15,7 @@ import LEDCube from './components/pages/project pages/LEDCube'
 import DangerBattery from './components/pages/project pages/DangerBattery'
 import SmartHome from './components/pages/project pages/SmartHome'
 import TheServer from './components/pages/project pages/TheServer'
+import Datadog from './components/pages/project pages/Datadog'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path='/ledcube' component={LEDCube} />
           <Route path='/dangerbattery' component={DangerBattery} />
           <Route path='/smarthome' component={SmartHome} />
+          <Route path='/datadog' component={Datadog} />
         </Switch>
       </Router>
     </>
