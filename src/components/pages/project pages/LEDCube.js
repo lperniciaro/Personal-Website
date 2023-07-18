@@ -25,27 +25,27 @@ export default function LEDCube(){
                     <div class="ledwrapper">
 
                     
-                    <div class="polaroidvid">
-                            <video controls width="100%" muted className='led'>
-                                <source src="LEDCube.mp4" type="video/mp4" />
-                                Sorry, your browser doesn't support videos.
-                            </video>
+                        <div class="polaroidvid">
+                                <video controls width="100%" muted className='led'>
+                                    <source src="LEDCube.mp4" type="video/mp4" />
+                                    Sorry, your browser doesn't support videos.
+                                </video>
+                                <div class="container">
+                                    <p>LED Cube Video</p>
+                                </div>
+                        </div> 
+                        <div class="polaroid3">
+                            <img src="LEDCubePartial.jpg" alt="LED Cube Partial" className="imgs"/>
                             <div class="container">
-                                <p>LED Cube Video</p>
+                                <p>Cube Partially Complete</p>
                             </div>
-                    </div> 
-                    <div class="polaroid3">
-                        <img src="LEDCubePartial.jpg" alt="LED Cube Partial" className="imgs"/>
-                        <div class="container">
-                            <p>Cube Partially Complete</p>
-                        </div>
-                    </div> 
-                    <div class="polaroid3">
-                        <img src="LEDCubeComplete.png" alt="LED Cube Partial" className="imgs"/>
-                        <div class="container">
-                            <p>Complete Cube</p>
-                        </div>
-                    </div> 
+                        </div> 
+                        <div class="polaroid3">
+                            <img src="LEDCubeComplete.png" alt="LED Cube Partial" className="imgs"/>
+                            <div class="container">
+                                <p>Complete Cube</p>
+                            </div>
+                        </div> 
                     </div>
                
                 </div>
