@@ -51,3 +51,26 @@ jobs:
 
       - name: Copy compilation to Nginx
         run: cp -r ${{secrets.COPY_FROM_FOLDER_DR}}/* ${{secrets.COPY_TO_FOLDER}}
+        
+  build-aws:
+    runs-on: aws
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+             
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}  
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Compile build
+        run: npm run build
+
+      - name: Copy compilation to Nginx
+        run: cp -r ${{secrets.COPY_FROM_FOLDER_DR}}/* ${{secrets.COPY_TO_FOLDER}}
