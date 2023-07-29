@@ -73,4 +73,4 @@ jobs:
         run: npm run build
 
       - name: Copy compilation to Nginx
-        run: cp -r ${{secrets.COPY_FROM_FOLDER_DR}}/* ${{secrets.COPY_TO_FOLDER}}
+        run: cp -r ${{vars.COPY_WORK_FROM}}/* ${{secrets.COPY_TO_FOLDER}}
