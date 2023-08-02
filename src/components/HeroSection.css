@@ -110,6 +110,7 @@ div.polaroid {
     margin-bottom: 25px;
     border-radius: 10px;
     margin: auto;
+    margin-top: 2%;
   }
   
   div.container {
@@ -154,12 +155,23 @@ div.polaroid {
     margin-right: auto;
   }
 
+  div.polaroid4 {
+    max-width: 350px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    border-radius: 10px;
+    margin: auto;
+    margin-left: 4%
+  }
+
 .leftdiv{
     font-size: 20px;
     width: 50%;
     height: 100%;
     float: left;
     padding-left: 4%;
+    padding-right: 4%;
 }
 
 .rightdiv{
@@ -172,12 +184,12 @@ div.polaroid {
 .smallcard{
     display: block;
     flex-flow: column;
-    padding-bottom: 3%;
-    padding-left: 18%;
-    padding-right: 18%;
+    padding-bottom: 2%;
+    padding-left: 30%;
+    padding-right: 30%;
     text-align: left;
     overflow:hidden;
-    font-size: 20px;
+    font-size: 18px;
     overflow-wrap: break-word;
     text-indent: 2.5em;
 }
@@ -199,6 +211,18 @@ div.polaroid {
     margin: 50px 0 45px;
     display: flex;
 }
+@media (max-width: 1600px) 
+ {
+    .smallcard
+    {
+        padding-left: 23%;
+        padding-right: 23%;
+        font-size: 16px; 
+    }
+    .leftdiv{
+        font-size: 12px;
+    }
+ }
 
 @media (max-width: 768px) 
  {

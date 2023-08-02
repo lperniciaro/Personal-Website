@@ -16,6 +16,7 @@ import DangerBattery from './components/pages/project pages/DangerBattery'
 import SmartHome from './components/pages/project pages/SmartHome'
 import TheServer from './components/pages/project pages/TheServer'
 import Datadog from './components/pages/project pages/Datadog'
+import PowerlineAI from './components/pages/project pages/PowerlineAI'
 
 function App() {
   return (
@@ -23,7 +24,6 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          /**Fix this so you can refresh the page */
           <Route path='/' exact component={Home}/>
           <Route path='/about-me' component={AboutMe} />
           <Route path='/portfolio' component={Portfolio} />
@@ -37,6 +37,7 @@ function App() {
           <Route path='/dangerbattery' component={DangerBattery} />
           <Route path='/smarthome' component={SmartHome} />
           <Route path='/datadog' component={Datadog} />
+          <Route path='/powerlineAI' component={PowerlineAI} />
         </Switch>
       </Router>
     </>

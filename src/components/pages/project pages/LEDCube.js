@@ -34,13 +34,13 @@ export default function LEDCube(){
                                     <p>LED Cube Video</p>
                                 </div>
                         </div> 
-                        <div class="polaroid3">
+                        <div class="polaroid4">
                             <img src="LEDCubePartial.jpg" alt="LED Cube Partial" className="imgs"/>
                             <div class="container">
                                 <p>Cube Partially Complete</p>
                             </div>
                         </div> 
-                        <div class="polaroid3">
+                        <div class="polaroid4">
                             <img src="LEDCubeComplete.png" alt="LED Cube Partial" className="imgs"/>
                             <div class="container">
                                 <p>Complete Cube</p>
