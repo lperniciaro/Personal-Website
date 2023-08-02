@@ -44,7 +44,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           
       - name: Stop nginx
-        run: systemctl stop nginx
+        run: sudo systemctl stop nginx
         
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
@@ -56,7 +56,7 @@ jobs:
         run: cp -r ${{secrets.COPY_FROM_FOLDER_DR}}/* ${{secrets.COPY_TO_FOLDER}}
         
       - name: Start nginx
-        run: systemctl start nginx
+        run: sudo systemctl start nginx
         
   build-aws:
     runs-on: aws
@@ -73,7 +73,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           
       - name: Stop nginx
-        run: systemctl stop nginx
+        run: sudo systemctl stop nginx
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
@@ -85,4 +85,4 @@ jobs:
         run: cp -r ${{vars.COPY_WORK_FROM}}/* ${{secrets.COPY_TO_FOLDER}}
         
       - name: Start nginx
-        run: systemctl start nginx
+        run: sudo systemctl start nginx
