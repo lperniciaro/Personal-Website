@@ -42,7 +42,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
+          
+      - name: Stop nginx
+        run: systemctl stop nginx
+        
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
@@ -51,6 +54,9 @@ jobs:
 
       - name: Copy compilation to Nginx
         run: cp -r ${{secrets.COPY_FROM_FOLDER_DR}}/* ${{secrets.COPY_TO_FOLDER}}
+        
+      - name: Start nginx
+        run: systemctl start nginx
         
   build-aws:
     runs-on: aws
@@ -65,6 +71,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          
+      - name: Stop nginx
+        run: systemctl stop nginx
 
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
@@ -74,3 +83,6 @@ jobs:
 
       - name: Copy compilation to Nginx
         run: cp -r ${{vars.COPY_WORK_FROM}}/* ${{secrets.COPY_TO_FOLDER}}
+        
+      - name: Start nginx
+        run: systemctl start nginx
