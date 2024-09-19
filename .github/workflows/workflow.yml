@@ -83,7 +83,7 @@ jobs:
         run: npm run build
 
       - name: Copy compilation to Nginx
-        run: cp -r ${{vars.COPY_WORK_FROM}}/* ${{secrets.COPY_TO_FOLDER}}
+        run: sudo cp -r ${{vars.COPY_WORK_FROM}}/* ${{secrets.COPY_TO_FOLDER}}
         
       - name: Start nginx
         run: sudo systemctl start nginx
