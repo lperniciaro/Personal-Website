@@ -8,6 +8,13 @@ import '../App.css';
 function HeroSection() {
     return (
         <div className='hero-container'>
+            <div className='profile-picture-container'>
+                <img 
+                    src="pics/Lucian Headshot Zoom.png" 
+                    alt="Profile" 
+                    className='profile-picture'
+                />
+            </div>
             <h1>Lucian Perniciaro IV</h1>
             <p>Texas A&M University</p>
             <div className="hero-btns">
@@ -19,5 +26,6 @@ function HeroSection() {
         </div>
     )
 }
+
 
 export default HeroSection;

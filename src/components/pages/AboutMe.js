@@ -21,7 +21,8 @@ export default function AboutMe() {
                         things to do, and software engineering allows me to accomplish that in many ways.
                 </div>
                 <div className='smallcard'>
-                        My software experience lies in automation and DevOps methodologies combined with full stack development experience.
+                        My software experience lies in automation and DevOps methodologies combined with full stack development experience. I enjoy having a full plate of large scale problems
+                        where I can show my abilities to think outside of the box and resolve problems.
                 </div>
                 <div className='smallcard'>
                     <div className='leftdiv'>
