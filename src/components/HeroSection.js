@@ -17,7 +17,7 @@ function HeroSection() {
                 />
             </div>
             <h1>Lucian Perniciaro IV</h1>
-            <p>Texas A&M University</p>
+            <p>San Diego, CA</p>
             <div className="hero-btns">
                 <Button className='btns' buttonStyle='btn--outline' 
                 buttonSize='btn--large'>Resume</Button>
