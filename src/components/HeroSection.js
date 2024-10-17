@@ -11,7 +11,7 @@ function HeroSection() {
         <div className='hero-container'>
             <div className='profile-picture-container'>
                 <img 
-                    src="pics/Lucian Headshot Zoom.png" 
+                    src="Pics/Lucian Headshot Zoom.png" 
                     alt="Profile" 
                     className='profile-picture'
                 />
