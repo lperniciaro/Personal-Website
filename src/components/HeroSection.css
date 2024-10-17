@@ -30,6 +30,18 @@ video {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.btn--linkedin {
+    background-color: #0077b5;
+    color: rgb(255, 255, 255);
+    border: none;
+    transition: all 0.3s ease-out;
+}
+
+.btn--linkedin:hover {
+    background-color: #005582;
+    color: white;
+}
+
 .hero-btns {
     margin-top: 32px;
 }
@@ -252,6 +264,18 @@ h1{
 
 .qualificationsmod{
     margin-top:4.5%;
+}
+
+.btn--primary{
+    background-color: #ffffff;
+    color: #242424;
+    border: 1px solid var(--primary);
+}
+
+.btn--primary:hover{
+    background-color: #d3d3d3;
+    color: #242424;
+    border: 1px solid var(--primary);
 }
 
 /* New Profile Picture Styling */

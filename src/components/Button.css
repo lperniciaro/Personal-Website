@@ -11,7 +11,13 @@
 }
 
 .btn--primary{
-    background-color: var(--primary);
+    background-color: #ffffff;
+    color: #242424;
+    border: 1px solid var(--primary);
+}
+
+.btn--primary:hover{
+    background-color: #d3d3d3;
     color: #242424;
     border: 1px solid var(--primary);
 }
