@@ -21,6 +21,9 @@ export default function AboutMe() {
                         things to do, and software engineering allows me to accomplish that in many ways.
                 </div>
                 <div className='smallcard'>
+                        My software experience lies in automation and DevOps methodologies combined with full stack development experience.
+                </div>
+                <div className='smallcard'>
                     <div className='leftdiv'>
 
                         Outside of engineering I like to apply my problem solving towards rallycross. Rallycross is a time trial dirt racing series 
