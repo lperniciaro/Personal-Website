@@ -1,0 +1,139 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  .post {
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  
+  .post em {
+    color: #888;
+    font-size: 0.9rem;
+    display: block;
+  }
+  
+  .post p {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .post p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Carousel Image Styling */
+  .carousel-image {
+    width: 100%;
+    height: 500px; /* Set a fixed height for the carousel */
+    object-fit: cover; /* Ensure images maintain aspect ratio and cover the entire area */
+  }
+  
+  .date {
+    white-space: pre; /* Preserves tabs and white spaces */
+    font-style: italic;
+    margin: 0;
+  }
+  /* react-slick Custom Styling */
+  
+  /* Arrows */
+  .slick-prev,
+  .slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .slick-prev {
+    left: 10px;
+  }
+  
+  .slick-next {
+    right: 10px;
+  }
+  
+  .slick-prev:hover,
+  .slick-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Dots */
+  .slick-dots {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .slick-dots li button:before {
+    font-size: 12px;
+    color: #333; /* Inactive dot color */
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: #333; /* Active dot color */
+  }
+  
+  .slick-dots li button:hover:before {
+    color: #555;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  
+    h2 {
+      font-size: 1.6rem;
+    }
+  
+    .post {
+      padding: 15px;
+    }
+  
+    .carousel-image {
+      height: 300px; /* Adjusted height for smaller screens */
+    }
+  
+    .slick-prev,
+    .slick-next {
+      font-size: 1.5rem;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+  

@@ -8,6 +8,7 @@ import AboutMe from './components/pages/AboutMe';
 import Portfolio from './components/pages/Portfolio';
 import Qualifications from './components/pages/Qualifications';
 import Service from './components/pages/Service';
+import Cars from './components/pages/Cars';
 import Atera2Autotask from './components/pages/project pages/Atera2Autotask'
 import ClientChecker from './components/pages/project pages/ClientChecker'
 import WakeOnWan from './components/pages/project pages/WakeOnWan'
@@ -27,6 +28,7 @@ function App() {
           <Route path='/' exact component={Home}/>
           <Route path='/about-me' component={AboutMe} />
           <Route path='/portfolio' component={Portfolio} />
+          <Route path='/cars' component={Cars} />
           <Route path="/the_server" component={TheServer} />
           <Route path='/qualifications' component={Qualifications} />
           <Route path='/service' component={Service} />
