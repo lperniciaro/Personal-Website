@@ -9,7 +9,7 @@ const Cars = () => {
   const [posts] = useState([
       {
       title: 'My First Rallycross',
-      date: 'Start Date: Jan 25-26, 2020    \t\t\t\t\t\t\t\t\t\t\t\t\tDate Posted: Oct 26, 2024',
+      date: 'Start Date: Jan 25-26, 2020    \t\t\t\t\t\t\t\t\t\t\t\tDate Posted: Oct 26, 2024',
       description: `The beginning of an incredible journey into Rallycrossing`,
       content: `I got the car fixed just in time. The next rallycross event at Lonestar Rallycross was coming up, and I was excited to learn how to manuver a RWD vehicle on the dirt. I drove the sketchy braked Grand Marquis from\
       College Station to San Marcos, TX, and had an absolute blast of a time. I could type a whole bunch of words about how awesome this was, but I think the pictures do it justice.`,
