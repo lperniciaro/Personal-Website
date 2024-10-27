@@ -64,7 +64,7 @@ export default function TheServer(){
             <h1 className='qualifications'>Services</h1>
             <div className='smallcard'>
                     So what all is the server doing? Of course, I've hinted at this earlier, but it is currently running the nginx web server that is 
-                    serving you this epic React based website. I run a variety of other services as well.
+                    serving you this epic React based website. (2024 UPDATE: Due to security and financial considerations, I now host the website on a free teir AWS EC2 instance) I run a variety of other services as well.
 
                     We got the good ol' 'Powerline AI' Senior design project (shameless frontend webserver, with django SQLite backend).
 

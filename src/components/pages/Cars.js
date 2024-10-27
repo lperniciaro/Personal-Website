@@ -7,6 +7,34 @@ import './Cars.css';
 
 const Cars = () => {
   const [posts] = useState([
+      {
+      title: 'My First Rallycross',
+      date: 'Start Date: Jan 25-26, 2020    \t\t\t\t\t\t\t\t\t\t\t\t\tDate Posted: Oct 26, 2024',
+      description: `The beginning of an incredible journey into Rallycrossing`,
+      content: `I got the car fixed just in time. The next rallycross event at Lonestar Rallycross was coming up, and I was excited to learn how to manuver a RWD vehicle on the dirt. I drove the sketchy braked Grand Marquis from\
+      College Station to San Marcos, TX, and had an absolute blast of a time. I could type a whole bunch of words about how awesome this was, but I think the pictures do it justice.`,
+      images: [
+        'Pics/Cars/First Drift.JPG',
+        'Pics/Cars/First rallycross.jpg',
+        'Pics/Cars/FirstRallyCone.jpg',
+        'Pics/Cars/FirstRallySlide.jpg'
+      ],
+    },
+    {
+      title: 'The First Repairs',
+      date: 'Date: Jan 19-24, 2020    \t\t\t\t\t\t\t\t\t\t\t\t\tDate Posted: Oct 26, 2024',
+      content: `As I'm rewriting this story four years later it's pretty nuts to me what I accomlished in such a short time frame. I had a clapped out, broken down Grand Marquis at my apartment complex. A few days later? Functioning vehicle.\n\n
+      
+      However, the journey did not start without some hiccups. The landlord forced it out of the property :/.
+      I emergency found a nearby storage unit, and got it towed off property. Not a great start to the project. Thankfully, I did not need that unit for long. I had correctly diagnosed the issue as a fuel pump and the car was running!\n\n
+      
+      The first test drive had it's issues, but great first impressions. I put it into reverse and it effortlessly backed out, with somewhat extremely sketchy, but 'technically stopping the vehicle' brakes. It went into drive just fine,\ 
+       and I slowly creeped it out of the grass parking lot. The rough terrain ripped some sagging trim underneath the engine. As we pulled out on to the road, I eagerly awaited each gear shift to see if I had made a good purchase, or if I\
+      just gave myself thousands of dollars of 'buy a new tranmission' debt. Everything checked out. The air condition even worked! The tires were hard as rocks and the first major purchase were a new set of the cheapest tires\
+      I could get from Walmart. Next a trip to the local junkyard to get the missing corner lights and bulbs, to make the car legal and registerable. I got the car registered and promptly parked it right back at my apartment complex. The\
+       landlord karen surely rued that day.`,
+
+    },
     {
       title: 'The Grand Marquis',
       date: 'Start Date: Jan 10, 2020    \t\t\t\t\t\t\t\t\t\t\t\t\tDate Posted: Oct 24, 2024',
@@ -32,6 +60,8 @@ const Cars = () => {
         'Pics/Cars/Interior first look.jpg'
       ],
     },
+    
+
   ]);
 
   // Custom Arrow components to remove text

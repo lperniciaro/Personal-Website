@@ -37,7 +37,7 @@ function Cards() {
                     <ul className="cards__items">
                         <CardItem
                             src='Pics/TheServer.jpg'
-                            text="It's serving you this site right now :D"
+                            text="My Homelab"
                             label='The Server'
                             path='/the_server'
                         />
