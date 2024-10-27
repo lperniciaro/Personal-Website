@@ -9,7 +9,7 @@ export default function Qualifications() {
                 <h1 className='qualificationsmod'>QUALIFICATIONS</h1>
                 
             </div>
-            <iframe className="pdf" src="Files/Resume LP 10.16.pdf">
+            <iframe className="pdf" src="Files/ResumeLucianPerniciaro.pdf">
 
             </iframe>
         </div>
