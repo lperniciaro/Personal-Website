@@ -11,9 +11,9 @@ export default function HeadedMouse() {
                 <div>11/23/2024</div>
                 <h1 className='about-me'>Summary</h1>
                 <div className='smallcard'>I wanted a heating gaming mouse. I just recently moved to San Diego, and was enjoying the fact that it
-                    was in the low 60s in the early morning. I only had one problem. When my room was this cold, by hands would get too cold and they
+                    was in the low 60s in the early morning. I only had one problem. When my room was this cold, my hands would get too cold and they
                     would move annoyingly slowly. So, the logical solution is to purchase a heated mouse! Unfortunately, the market does not have any
-                    high quality options for heated mice. While, I was able to find a ~$30 model that seemed pretty decent. It clearly did not have an
+                    high quality options for heated mice. While I was able to find a ~$30 model that seemed pretty decent. It clearly did not have an
                     expensive/accurate sensor that would be acceptable for my quick mouse movements. So, my solution was to buy the cheapest heated mouse on amazon,
                     gut the internals, and place them inside of a good mouse.
 
