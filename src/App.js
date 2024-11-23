@@ -18,6 +18,7 @@ import SmartHome from './components/pages/project pages/SmartHome'
 import TheServer from './components/pages/project pages/TheServer'
 import Datadog from './components/pages/project pages/Datadog'
 import PowerlineAI from './components/pages/project pages/PowerlineAI'
+import GamingMouse from './components/pages/project pages/HeatedMouse'
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path='/smarthome' component={SmartHome} />
           <Route path='/datadog' component={Datadog} />
           <Route path='/powerlineAI' component={PowerlineAI} />
+          <Route path='/gamingMouse' component={GamingMouse} />
         </Switch>
       </Router>
     </>

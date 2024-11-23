@@ -9,6 +9,12 @@ function Cards() {
             <div className="cards__container">
                 <div className="cards__wrapper">
                     <ul className="cards__items">
+                        <CardItem
+                            src='Pics/Finalmouse/4.jpg'
+                            text="Heated Gaming Mouse"
+                            label='DIY Finalmouse Modification'
+                            path='/gamingMouse'
+                        />
 
                         <CardItem
                             src='Pics/PowerlineAIDiagram.png'
