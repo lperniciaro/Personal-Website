@@ -7,7 +7,7 @@ on:
     paths:
       - 'src/**'            # Monitor changes in the frontend (src directory)
       - 'backend/**'        # Monitor changes in the backend directory
-      - '.github/*'
+      - '.github/**'
   workflow_dispatch:
 
 jobs:
@@ -26,25 +26,25 @@ jobs:
 
       # Frontend deployment steps
       - name: Use Node.js ${{ matrix.node-version }} (Frontend)
-        if: contains(github.event.head_commit.message, 'src/')
+        #if: contains(github.event.head_commit.message, 'src/')
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies (Frontend)
-        if: contains(github.event.head_commit.message, 'src/')
+        #if: contains(github.event.head_commit.message, 'src/')
         run: npm ci --legacy-peer-deps
 
       - name: Compile build (Frontend)
-        if: contains(github.event.head_commit.message, 'src/')
+        #if: contains(github.event.head_commit.message, 'src/')
         run: npm run build
 
       - name: Copy compilation to Nginx (Frontend)
-        if: contains(github.event.head_commit.message, 'src/')
+        #if: contains(github.event.head_commit.message, 'src/')
         run: sudo cp -r ${{vars.COPY_WORK_FROM}}/* ${{vars.COPY_TO_FOLDER}}
 
       - name: Copy nginx configuration (Frontend)
-        if: contains(github.event.head_commit.message, 'backend/nginx.conf')
+        #if: contains(github.event.head_commit.message, 'backend/nginx.conf')
         run: sudo cp ${{vars.COPY_NGINX_CONF_FROM}} ${{vars.COPY_NGINX_CONF_TO}}
 
       - name: Start nginx (Frontend)
@@ -52,24 +52,24 @@ jobs:
 
       # Backend deployment steps
       - name: Copy gunicorn service (Backend)
-        if: contains(github.event.head_commit.message, 'backend/')
+        #if: contains(github.event.head_commit.message, 'backend/')
         run: sudo cp ${{vars.COPY_GUNICORN_SERVICE_FROM}} ${{vars.COPY_GUNICORN_SERVICE_TO}}
 
       - name: Reload systemd daemon (Backend)
-        if: contains(github.event.head_commit.message, 'backend/')
+        #if: contains(github.event.head_commit.message, 'backend/')
         run: sudo systemctl daemon-reload
 
       - name: Install Python dependencies (Backend)
-        if: contains(github.event.head_commit.message, 'backend/')
+        #if: contains(github.event.head_commit.message, 'backend/')
         run: |
           python3 -m venv venv
           source venv/bin/activate
           pip install -r backend/requirements.txt
 
       - name: Restart Gunicorn service (Backend)
-        if: contains(github.event.head_commit.message, 'backend/')
+        #if: contains(github.event.head_commit.message, 'backend/')
         run: sudo systemctl restart gunicorn
 
       - name: Check Gunicorn status (Backend)
-        if: contains(github.event.head_commit.message, 'backend/')
+        #if: contains(github.event.head_commit.message, 'backend/')
         run: sudo systemctl status gunicorn
