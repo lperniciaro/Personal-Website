@@ -90,54 +90,53 @@ jobs:
             echo "backend_changes=true" >> $GITHUB_ENV
           fi          
 
-      #Frontend deployment steps
-      - name: Deploy Frontend
+      # Frontend deployment steps
+      - name: Use Node.js ${{ matrix.node-version }} (Frontend)
         if: env.frontend_changes == 'true'
-        steps:
-          - name: Use Node.js ${{ matrix.node-version }}  
-            uses: actions/setup-node@v3
-            with:
-              node-version: ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-          - name: Install dependencies
-            run: npm ci --legacy-peer-deps
+      - name: Install dependencies (Frontend)
+        if: env.frontend_changes == 'true'
+        run: npm ci --legacy-peer-deps
 
-          - name: Compile build
-            run: npm run build
+      - name: Compile build (Frontend)
+        if: env.frontend_changes == 'true'
+        run: npm run build
 
-          - name: Copy compilation to Nginx
-            run: sudo cp -r ${{vars.COPY_WORK_FROM}}/* ${{vars.COPY_TO_FOLDER}}
+      - name: Copy compilation to Nginx (Frontend)
+        if: env.frontend_changes == 'true'
+        run: sudo cp -r ${{vars.COPY_WORK_FROM}}/* ${{vars.COPY_TO_FOLDER}}
 
-          - name: Copy nginx configuration
-            run: sudo cp ${{vars.COPY_NGINX_CONF_FROM}} ${{vars.COPY_NGINX_CONF_TO}}
-            
-          - name: Start nginx
-            run: sudo systemctl start nginx
+      - name: Copy nginx configuration (Frontend)
+        if: env.frontend_changes == 'true'
+        run: sudo cp ${{vars.COPY_NGINX_CONF_FROM}} ${{vars.COPY_NGINX_CONF_TO}}
+
+      - name: Start nginx (Frontend)
+        if: env.frontend_changes == 'true'
+        run: sudo systemctl start nginx
 
       # Backend deployment steps
-      - name: Deploy Backend
+      - name: Copy gunicorn service (Backend)
         if: env.backend_changes == 'true'
-        steps:
-          # - name: Set up Python
-          #   uses: actions/setup-python@v4
-          #   with:
-          #     python-version: '3.10'
+        run: sudo cp ${{vars.COPY_GUNICORN_SERVICE_FROM}} ${{vars.COPY_GUNICORN_SERVICE_TO}}
 
-          - name: Copy gunicorn service
-            run: sudo cp ${{vars.COPY_GUNICORN_SERVICE_FROM}} ${{vars.COPY_GUNICORN_SERVICE_TO}}
+      - name: Reload systemd daemon (Backend)
+        if: env.backend_changes == 'true'
+        run: sudo systemctl daemon-reload
 
-          - name: Reload systemd daemon
-            run: sudo systemctl daemon-reload
+      - name: Install Python dependencies (Backend)
+        if: env.backend_changes == 'true'
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r backend/requirements.txt
 
-          - name: Install Python dependencies
-            run: |
-              python3 -m venv venv
-              source venv/bin/activate
-              pip install -r backend/requirements.txt
+      - name: Restart Gunicorn service (Backend)
+        if: env.backend_changes == 'true'
+        run: sudo systemctl restart gunicorn
 
-          - name: Restart Gunicorn service
-            run: |
-              sudo systemctl restart gunicorn
-
-          - name: Check Gunicorn status
-            run: sudo systemctl status gunicorn
+      - name: Check Gunicorn status (Backend)
+        if: env.backend_changes == 'true'
+        run: sudo systemctl status gunicorn
