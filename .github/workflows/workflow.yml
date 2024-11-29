@@ -4,139 +4,71 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'src/**'            # Monitor changes in the frontend (src directory)
+      - 'backend/**'        # Monitor changes in the backend directory
   workflow_dispatch:
 
 jobs:
-#  build-prod:
-#    runs-on: prod
-
-#    strategy:
-#      matrix:
-#        node-version: [16.x]
-             
-#    steps:
-#      - uses: actions/checkout@v3
- #     - name: Use Node.js ${{ matrix.node-version }}  
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: ${{ matrix.node-version }}
-
-#      - name: Install dependencies
-#        run: npm ci --legacy-peer-deps
-
-#      - name: Compile build
-#        run: npm run build
-
-#      - name: Copy compilation to Nginx
-#        run: cp -r ${{secrets.COPY_FROM_FOLDER}}/* ${{secrets.COPY_TO_FOLDER}}
-
-  # build-dr:
-  #   runs-on: dr
-
-  #   strategy:
-  #     matrix:
-  #       node-version: [16.x]
-             
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Use Node.js ${{ matrix.node-version }}  
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-          
-  #     - name: Stop nginx
-  #       run: sudo systemctl stop nginx
-        
-  #     - name: Install dependencies
-  #       run: npm ci --legacy-peer-deps
-
-  #     - name: Compile build
-  #       run: npm run build
-
-  #     - name: Copy compilation to Nginx
-  #       run: cp -r ${{secrets.COPY_FROM_FOLDER_DR}}/* ${{secrets.COPY_TO_FOLDER}}
-        
-  #     - name: Start nginx
-  #       run: sudo systemctl start nginx
-        
   build-aws:
     runs-on: aws
 
     strategy:
       matrix:
         node-version: [16.x]
-             
+
     steps:
       - uses: actions/checkout@v3
 
-      - name: Stop nginx
+      - name: Stop nginx (Frontend)
         run: sudo systemctl stop nginx
-
-      - name: Check for changes in the src directory
-        id: changes
-        run: |
-          if git diff --quiet HEAD^ HEAD src; then
-            echo "frontend_changes=false" >> $GITHUB_ENV
-          else
-            echo "frontend_changes=true" >> $GITHUB_ENV
-          fi
-
-      - name: Check for changes in the backend directory
-        id: changes2
-        run: |
-          if git diff --quiet HEAD^ HEAD backend; then
-            echo "backend_changes=false" >> $GITHUB_ENV
-          else
-            echo "backend_changes=true" >> $GITHUB_ENV
-          fi          
 
       # Frontend deployment steps
       - name: Use Node.js ${{ matrix.node-version }} (Frontend)
-        if: env.frontend_changes == 'true'
+        if: contains(github.event.head_commit.message, 'src/')
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies (Frontend)
-        if: env.frontend_changes == 'true'
+        if: contains(github.event.head_commit.message, 'src/')
         run: npm ci --legacy-peer-deps
 
       - name: Compile build (Frontend)
-        if: env.frontend_changes == 'true'
+        if: contains(github.event.head_commit.message, 'src/')
         run: npm run build
 
       - name: Copy compilation to Nginx (Frontend)
-        if: env.frontend_changes == 'true'
+        if: contains(github.event.head_commit.message, 'src/')
         run: sudo cp -r ${{vars.COPY_WORK_FROM}}/* ${{vars.COPY_TO_FOLDER}}
 
       - name: Copy nginx configuration (Frontend)
-        if: env.frontend_changes == 'true'
+        if: contains(github.event.head_commit.message, 'backend/nginx.conf')
         run: sudo cp ${{vars.COPY_NGINX_CONF_FROM}} ${{vars.COPY_NGINX_CONF_TO}}
 
       - name: Start nginx (Frontend)
-        if: env.frontend_changes == 'true'
         run: sudo systemctl start nginx
 
       # Backend deployment steps
       - name: Copy gunicorn service (Backend)
-        if: env.backend_changes == 'true'
+        if: contains(github.event.head_commit.message, 'backend/')
         run: sudo cp ${{vars.COPY_GUNICORN_SERVICE_FROM}} ${{vars.COPY_GUNICORN_SERVICE_TO}}
 
       - name: Reload systemd daemon (Backend)
-        if: env.backend_changes == 'true'
+        if: contains(github.event.head_commit.message, 'backend/')
         run: sudo systemctl daemon-reload
 
       - name: Install Python dependencies (Backend)
-        if: env.backend_changes == 'true'
+        if: contains(github.event.head_commit.message, 'backend/')
         run: |
           python3 -m venv venv
           source venv/bin/activate
           pip install -r backend/requirements.txt
 
       - name: Restart Gunicorn service (Backend)
-        if: env.backend_changes == 'true'
+        if: contains(github.event.head_commit.message, 'backend/')
         run: sudo systemctl restart gunicorn
 
       - name: Check Gunicorn status (Backend)
-        if: env.backend_changes == 'true'
+        if: contains(github.event.head_commit.message, 'backend/')
         run: sudo systemctl status gunicorn
