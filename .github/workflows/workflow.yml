@@ -24,6 +24,10 @@ jobs:
       - name: Stop nginx (Frontend)
         run: sudo systemctl stop nginx
 
+      - name: Stop Gunicorn service (Backend)
+        #if: contains(github.event.head_commit.message, 'backend/')
+        run: sudo systemctl stop gunicorn
+
       # Frontend deployment steps
       - name: Use Node.js ${{ matrix.node-version }} (Frontend)
         #if: contains(github.event.head_commit.message, 'src/')
@@ -47,9 +51,6 @@ jobs:
         #if: contains(github.event.head_commit.message, 'backend/nginx.conf')
         run: sudo cp ${{vars.COPY_NGINX_CONF_FROM}} ${{vars.COPY_NGINX_CONF_TO}}
 
-      - name: Start nginx (Frontend)
-        run: sudo systemctl start nginx
-
       # Backend deployment steps
       - name: Copy gunicorn service (Backend)
         #if: contains(github.event.head_commit.message, 'backend/')
@@ -68,8 +69,11 @@ jobs:
 
       - name: Restart Gunicorn service (Backend)
         #if: contains(github.event.head_commit.message, 'backend/')
-        run: sudo systemctl restart gunicorn
+        run: sudo systemctl enable gunicorn
 
-      - name: Check Gunicorn status (Backend)
+      - name: Restart Gunicorn service (Backend)
         #if: contains(github.event.head_commit.message, 'backend/')
-        run: sudo systemctl status gunicorn
+        run: sudo systemctl start gunicorn
+
+      - name: Start nginx (Frontend)
+        run: sudo systemctl start nginx
