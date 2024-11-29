@@ -82,7 +82,7 @@ jobs:
           fi
 
       - name: Check for changes in the backend directory
-        id: changes
+        id: changes2
         run: |
           if git diff --quiet HEAD^ HEAD backend; then
             echo "backend_changes=false" >> $GITHUB_ENV
