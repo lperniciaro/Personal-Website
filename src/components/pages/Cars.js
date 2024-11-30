@@ -8,6 +8,50 @@ import './Cars.css';
 const Cars = () => {
   const [posts] = useState([
     {
+      title: '2020 SCCA Dirtfish Rallycross National Championship',
+      date: 'Start Date: Aug 15-16, 2020',
+      datePosted: 'Date Posted: Nov 30, 2024',
+      description: `The Crown Vic goes to Nationals`,
+      content: `It was a 2 day event. Around 300 cars attending. I was in the stock rear wheel drive class. I was a bit too eager to start and decided \
+      to line up near the front of the line. This was a mistake. The 'track' was just a grass field with cones, and had still yet to become a track yet. \
+      It was extremely slippery, like driving on ice. Not a great start. Still though, I could tell the track design was one of the fastest I've raced in rallycross. \
+      I definitely achieved a top speed of ~50-60mph. By the end of the 2 day event I was battered. Rallycross requires a working component. There are 3 class groups \
+      and the two other groups run the cones and call out the cones that are knocked over. Given that there were over 300 cars, and this was my largest rallycross event \
+      by far, there was a lot of work to be done. \n\n Somebody flipped their car on the corner I was working! \
+      My biggest regret of this event is standing there in shock like a dumbass taking a picture, instead of giving immediate assistance to the guy who almost \
+      just lost his arm. He got extremely lucky. I saw his arm come out of the window as it was flipping through the air. Luckily, he was able to pull it back \
+      in before it rolled over, and he came out of this disaster with no injuries. We had to stand out in the extremely dusty field for hours. This was also covid time where we were expected to wear \
+      a mask. Though, to be honest. They came in handy so I could breathe with the dust. By the end of the event I was happy to have beat a few miatas \
+      (because they spun out a few times), so I didn't come last! Mission success!`,
+      images: [
+        'Pics/Cars/oklahoma7.jpg',
+        'Pics/Cars/oklahoma8.jpg',
+        'Pics/Cars/oklahomagrid.jpg',
+        'Pics/Cars/oklahomaoopsy.jpg',
+        'Pics/Cars/oklahomascenic.jpg',
+        'Pics/Cars/oklahomaselfie.PNG',
+      ]
+    },
+    {
+      title: 'The Oklahoma Trip',
+      date: 'Start Date: Aug 13, 2020',
+      datePosted: 'Date Posted: Nov 30, 2024',
+      description: `The Crown Vic drives to Nationals`,
+      content: `2020 Dirtfish Rallycross National Championship in Topeka, Kansas. It was a spur of the moment decision to join. My friend Chase \
+      was going in his 1st generation rally Subaru, an actual race car. I was going in what was basically my daily driver, he was driving a stripped \
+      down race car with extremely low gearing. The top speed of our trip was 60mph as that was over 4k RPM for his car. It was not exactly my idea of \
+      the most fun roadtrip, but we made it with no issues. It's time to race. Since we are at nationals and I'm driving a stock crown vic, my goal is \
+      anything that isn't last place. :D`,
+      images: [
+        'Pics/Cars/oklahoma1.jpg',
+        'Pics/Cars/oklahoma2.jpg',
+        'Pics/Cars/oklahoma3.jpg',
+        'Pics/Cars/oklahoma4.jpg',
+        'Pics/Cars/oklahoma5.jpg',
+        'Pics/Cars/oklahoma6.jpg',
+      ]
+    },
+    {
       title: 'Rallycross POV',
       date: 'Start Date: July 25, 2020',
       datePosted: 'Date Posted: Nov 29, 2024',
@@ -17,6 +61,20 @@ const Cars = () => {
       videos: [
         { type: 'local', src: 'Pics/Cars/RallyPOV.MOV' },
       ],
+    },
+    {
+      title: 'ITS SPINNING',
+      date: 'Start Date: Jun 07, 2020',
+      datePosted: 'Date Posted: Nov 30, 2024',
+      description: `Boy do I love mechanic work`,
+      content: `It was time to replace the shocks and control arms to get some fresh, non 20 year old bushings and suspension. The passenger side went pretty smoothly.\
+       The drivers side however. Oh boy. Even with the worlds longest prybar, it was impossible to hold the shaft of the control arm bolt from spinning with the nut. \
+       We ended up having to use the brute force option, as depicted in the image above.`,
+      images: [
+        'Pics/Cars/newshock1.jpg',
+        'Pics/Cars/newshock2.jpg',
+        'Pics/Cars/themoneyshot.jpg',
+      ]
     },
     {
       title: 'When Disaster Struck',
