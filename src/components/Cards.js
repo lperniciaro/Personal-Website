@@ -7,14 +7,27 @@ function Cards() {
         <div className='cards'>
             <h1>PROJECTS</h1>
             <div className="cards__container">
-                <div className="cards__wrapper">
+            <div className="cards__wrapper">
                     <ul className="cards__items">
+
+                        <CardItem
+                            src='Pics/PowerlineAIDiagram.png'
+                            text="Google reCaptcha v3 for Resume Access"
+                            label='Securing my Personal Information'
+                            path='/recaptchaProject'
+                        />
+
                         <CardItem
                             src='Pics/Finalmouse/4.jpg'
                             text="Heated Gaming Mouse"
                             label='DIY Finalmouse Modification'
                             path='/gamingMouse'
                         />
+
+                    </ul>
+                </div>
+                <div className="cards__wrapper">
+                    <ul className="cards__items">
 
                         <CardItem
                             src='Pics/PowerlineAIDiagram.png'

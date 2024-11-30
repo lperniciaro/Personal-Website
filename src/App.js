@@ -19,6 +19,7 @@ import TheServer from './components/pages/project pages/TheServer'
 import Datadog from './components/pages/project pages/Datadog'
 import PowerlineAI from './components/pages/project pages/PowerlineAI'
 import GamingMouse from './components/pages/project pages/HeatedMouse'
+import RecaptchaProject from './components/pages/project pages/RecaptchaProject'
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path='/datadog' component={Datadog} />
           <Route path='/powerlineAI' component={PowerlineAI} />
           <Route path='/gamingMouse' component={GamingMouse} />
+          <Route path='/recaptchaProject' component={RecaptchaProject} />
         </Switch>
       </Router>
     </>
