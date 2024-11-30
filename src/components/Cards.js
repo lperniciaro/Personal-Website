@@ -11,7 +11,7 @@ function Cards() {
                     <ul className="cards__items">
 
                         <CardItem
-                            src='Pics/PowerlineAIDiagram.png'
+                            src='Pics/reCAPTCHA-enterprise.png'
                             text="Google reCaptcha v3 for Resume Access"
                             label='Securing my Personal Information'
                             path='/recaptchaProject'
