@@ -15,7 +15,7 @@ const Cars = () => {
       content: `The car has been great, hasn't had an issue since the first disaster. Now I'm inviting my friends and we're all having a blast. Here's some POV\
        footage of a friend driving with me in the passenger seat.`,
       videos: [
-        'Pics/Cars/RallyPOV.MOV'
+        { type: 'local', src: 'Pics/Cars/RallyPOV.MOV' },
       ],
     },
     {
@@ -114,7 +114,9 @@ const Cars = () => {
       just gave myself thousands of dollars of 'buy a new tranmission' debt. Everything checked out. The air condition even worked! The tires were hard as rocks and the first major purchase were a new set of the cheapest tires\
       I could get from Walmart. Next a trip to the local junkyard to get the missing corner lights and bulbs, to make the car legal and registerable. I got the car registered and promptly parked it right back at my apartment complex. The\
        landlord karen surely rued that day.`,
-
+      videos: [
+        { type: 'youtube', src: 'https://www.youtube.com/embed/dKiouwl-33I' },
+      ],
     },
     {
       title: 'The Grand Marquis',
@@ -198,10 +200,22 @@ const Cars = () => {
             <div>
               {post.videos.map((video, vidIndex) => (
                 <div key={vidIndex}>
-                  <video controls className="carousel-video">
-                    <source src={video} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+                  {video.type === 'local' ? (
+                    <video controls className="carousel-video">
+                      <source src={video.src} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <iframe
+                      width="100%"
+                      height="500"
+                      src={video.src}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={`video-${vidIndex}`}
+                    ></iframe>
+                  )}
                 </div>
               ))}
             </div>
