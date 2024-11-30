@@ -175,12 +175,11 @@ div.polaroid4 {
 }
 
 .leftdiv{
-    font-size: 20px;
+    font-size: 18px;
     width: 50%;
     height: 100%;
     float: left;
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-right: 2%;
 }
 
 .rightdiv{
