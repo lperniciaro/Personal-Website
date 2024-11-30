@@ -1,21 +1,31 @@
 import requests
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file, session
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
+from flask_session import Session
+import secrets
 
 app = Flask(__name__)
 
-# Replace with your actual project details
-load_dotenv(dotenv_path="./.env")
+# Load environment variables
+load_dotenv(dotenv_path=r"C:\Users\LP\Documents\Repos\Personal-Website\backend\.env")
 API_KEY = os.getenv("RECAPTCHA_API_KEY")
 PROJECT_ID = os.getenv("RECAPTCHA_PROJECT_ID")
 SITE_KEY = os.getenv("RECAPTCHA_SITE_KEY")
 FLASK_PORT = os.getenv("FLASK_PORT")
+RESUME_PATH = os.getenv("RESUME_PATH")  # Path to the resume file
 
+# Configure Flask session
+app.config['SECRET_KEY'] = secrets.token_hex(32)
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config.from_object(__name__)
+# Dynamically generate a secret key for development
+Session(app)
 
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
-CORS(app, resources={r"/*": {"origins": "http://lucianp.com:443"}})
+# CORS configuration
+CORS(app, supports_credentials=True, origins=["http://localhost:3000"])
+CORS(app, supports_credentials=True, origins=["http://lucianp.com:443"])
 
 def verify_recaptcha(token, user_action):
     """Send a reCAPTCHA Enterprise assessment request to Google."""
@@ -46,7 +56,8 @@ def verify_recaptcha(token, user_action):
 @app.route('/verify-recaptcha', methods=['POST'])
 def verify():
     """API endpoint to handle reCAPTCHA verification."""
-    # Extract `token` and `user_action` from the incoming client request
+    session['test'] = 'sneads'
+    session['verified'] = 'NOPE'
     data = request.json
     token = data.get("token")
     user_action = data.get("user_action")
@@ -57,7 +68,6 @@ def verify():
     # Call the reCAPTCHA verification function
     verification_result = verify_recaptcha(token, user_action)
 
-    # If there's an error, return it to the client
     if "error" in verification_result:
         return jsonify({"success": False, "error": verification_result["error"]}), verification_result["status_code"]
     
@@ -65,13 +75,32 @@ def verify():
     action_match = verification_result.get("event", {}).get("expectedAction") == user_action
 
     if score >= 0.5 and action_match:
-        print(verification_result)
+        # Store verification status in the session
+        session['verified'] = True
         return jsonify({"success": True, "data": verification_result}), 200
     else:
-        print(f"Failed because of low score or action mismatch {score}, {action_match}")
-        print(verification_result)
-        return jsonify({"success": False, "message": "Verification failed or low score"}), 403
-    
+        return jsonify({"success": False, "message": "Verification failed or low score", "score": score}), 403
+
+@app.route('/download-resume', methods=['GET'])
+def download_resume():
+    """API endpoint to send the resume file."""
+    test = session.get('verified')
+    test2 = session.get('test')
+    # Check if the user has been verified
+    if not session.get('verified'):
+        return jsonify({"success": False, "message": "Unauthorized access. Please complete CAPTCHA first."}), 403
+
+    try:
+        # Clear verification status after sending the file
+        session.pop('verified', None)
+        return send_file(
+            RESUME_PATH,
+            mimetype='application/pdf',
+            as_attachment=False,  # Ensure the file is displayed inline
+            download_name='ResumeLucianPerniciaro.pdf',  # Optional for browsers that support it
+        )
+    except FileNotFoundError:
+        return jsonify({"success": False, "message": "Resume file not found"}), 404
 
 # Run the Flask app
 if __name__ == '__main__':

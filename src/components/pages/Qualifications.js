@@ -23,6 +23,7 @@ const ResumeAccess = ({ setVerified }) => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ token, user_action: 'view_resume' }),
+                    credentials: 'include',
                 });
 
                 const data = await response.json();
@@ -54,6 +55,7 @@ const ResumeAccess = ({ setVerified }) => {
 
 export default function Qualifications() {
     const [verified, setVerified] = useState(false); // State to track if CAPTCHA is verified
+    const [error, setError] = useState('');
 
     return (
         <GoogleReCaptchaProvider
@@ -66,11 +68,19 @@ export default function Qualifications() {
                 {!verified ? (
                     <ResumeAccess setVerified={setVerified} />
                 ) : (
-                    <iframe
-                        className="pdf"
-                        src="Files/ResumeLucianPerniciaro.pdf"
-                        title="Resume"
-                    ></iframe>
+                    <>
+                        <iframe
+                            className="pdf"
+                            src={`${process.env.REACT_APP_RECAPTCHA_URL}/download-resume`}
+                            title="Resume"
+                            onError={() => setError('Failed to load resume. Please try again later.')}
+                        ></iframe>
+                        {error && (
+                            <p className="error-message">
+                                {error}
+                            </p>
+                        )}
+                    </>
                 )}
             </div>
         </GoogleReCaptchaProvider>
