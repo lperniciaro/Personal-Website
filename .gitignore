@@ -3,3 +3,6 @@ build/
 backend/.env
 backend/flask_session/
 flask_session/
+terraform/.terraform/
+*.tfstate
+*.tfstate.*
