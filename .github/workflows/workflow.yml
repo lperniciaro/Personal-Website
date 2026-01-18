@@ -70,7 +70,8 @@ jobs:
 
       - name: Deploy Lambda function
         run: |
+          FUNCTION_NAME=$(echo "${{ secrets.S3_BUCKET }}" | sed 's/\./-/g' | sed 's/-site$//')-backend
           aws lambda update-function-code \
-            --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} \
+            --function-name $FUNCTION_NAME \
             --zip-file fileb://backend/lambda_function.zip
 
