@@ -210,6 +210,14 @@ data "aws_iam_policy_document" "github_actions_policy" {
     ]
     resources = [aws_cloudfront_distribution.site.arn]
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "lambda:UpdateFunctionCode"
+    ]
+    resources = [aws_lambda_function.backend.arn]
+  }
 }
 
 resource "aws_iam_role_policy" "github_actions" {
