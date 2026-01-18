@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import '../../App.css';
 
-const ResumeAccess = ({ setVerified }) => {
+const ResumeAccess = ({ setVerified, setDownloadToken }) => {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [error, setError] = useState('');
 
@@ -17,19 +17,19 @@ const ResumeAccess = ({ setVerified }) => {
                 // Execute the reCAPTCHA with the action 'view_resume'
                 const token = await executeRecaptcha('view_resume');
                 // Send the token to the backend for verification
-                const response = await fetch(`${process.env.REACT_APP_RECAPTCHA_URL}/verify-recaptcha`, {
+                const response = await fetch(`${process.env.REACT_APP_LAMBDA_URL}/verify-recaptcha`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ token, user_action: 'view_resume' }),
-                    credentials: 'include',
                 });
 
                 const data = await response.json();
 
                 if (data.success) {
                     setVerified(true); // Allow access to the resume
+                    setDownloadToken(data.downloadToken); // Store the download token
                     console.log('CAPTCHA verification successful');
                 } else {
                     const invalidReason = (data && data.tokenProperties && data.tokenProperties.invalidReason) || "No invalid reason specified";
@@ -43,7 +43,7 @@ const ResumeAccess = ({ setVerified }) => {
         };
 
         verifyCaptcha(); // Automatically run CAPTCHA verification when the component mounts
-    }, [executeRecaptcha, setVerified]);
+    }, [executeRecaptcha, setVerified, setDownloadToken]);
 
     return (
         <div>
@@ -55,6 +55,7 @@ const ResumeAccess = ({ setVerified }) => {
 
 export default function Qualifications() {
     const [verified, setVerified] = useState(false); // State to track if CAPTCHA is verified
+    const [downloadToken, setDownloadToken] = useState(''); // State to store download token
     const [error, setError] = useState('');
 
     return (
@@ -66,12 +67,12 @@ export default function Qualifications() {
                     <h1 className="qualificationsmod">QUALIFICATIONS</h1>
                 </div>
                 {!verified ? (
-                    <ResumeAccess setVerified={setVerified} />
+                    <ResumeAccess setVerified={setVerified} setDownloadToken={setDownloadToken} />
                 ) : (
                     <>
                         <iframe
                             className="pdf"
-                            src={`${process.env.REACT_APP_RECAPTCHA_URL}/download-resume`}
+                            src={`${process.env.REACT_APP_LAMBDA_URL}/download-resume?token=${downloadToken}`}
                             title="Resume"
                             onError={() => setError('Failed to load resume. Please try again later.')}
                         ></iframe>

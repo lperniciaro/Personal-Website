@@ -29,3 +29,9 @@ output "github_actions_role_arn" {
   value       = aws_iam_role.github_actions.arn
   description = "Role ARN to use in GitHub Actions OIDC auth."
 }
+
+output "lambda_function_url" {
+  value       = aws_lambda_function_url.backend.function_url
+  description = "Lambda function URL for backend API."
+}
+

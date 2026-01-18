@@ -6,3 +6,7 @@ flask_session/
 terraform/.terraform/
 *.tfstate
 *.tfstate.*
+backend/lambda_package/
+backend/lambda_function.zip
+terraform/secrets.auto.tfvars
+.env.local

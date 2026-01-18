@@ -8,6 +8,7 @@ on:
       - 'src/**'            # Monitor changes in the frontend (src directory)
       - 'public/**'
       - 'assets/**'
+      - 'backend/**'         # Monitor backend changes
       - 'package.json'
       - 'package-lock.json'
       - '.github/**'
@@ -52,3 +53,24 @@ jobs:
 
       - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+
+      # Backend Lambda deployment
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Package Lambda function
+        run: |
+          cd backend
+          pip install -r lambda_requirements.txt -t lambda_package/ --upgrade
+          cp lambda_handler.py lambda_package/
+          cd lambda_package
+          zip -r ../lambda_function.zip .
+
+      - name: Deploy Lambda function
+        run: |
+          aws lambda update-function-code \
+            --function-name ${{ secrets.LAMBDA_FUNCTION_NAME }} \
+            --zip-file fileb://backend/lambda_function.zip
+

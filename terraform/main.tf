@@ -13,6 +13,15 @@ locals {
 
 data "aws_caller_identity" "current" {}
 
+# Upload resume to private folder in site bucket
+resource "aws_s3_object" "resume_pdf" {
+  bucket       = aws_s3_bucket.site.id
+  key          = "private/ResumeLucianPerniciaro.pdf"
+  source       = "${path.module}/../assets/ResumeLucianPerniciaro.pdf"
+  content_type = "application/pdf"
+  etag         = filemd5("${path.module}/../assets/ResumeLucianPerniciaro.pdf")
+}
+
 resource "aws_s3_bucket" "site" {
   bucket = var.bucket_name
 }
@@ -207,3 +216,81 @@ resource "aws_iam_role_policy" "github_actions" {
   role   = aws_iam_role.github_actions.id
   policy = data.aws_iam_policy_document.github_actions_policy.json
 }
+
+# Lambda function for backend
+resource "aws_iam_role" "lambda_backend" {
+  name = replace("${var.domain_name}-lambda-backend", ".", "-")
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Principal = {
+        Service = "lambda.amazonaws.com"
+      }
+      Action = "sts:AssumeRole"
+    }]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_basic" {
+  role       = aws_iam_role.lambda_backend.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_iam_role_policy" "lambda_s3_resume" {
+  name = "lambda-s3-resume-access"
+  role = aws_iam_role.lambda_backend.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Action = [
+        "s3:GetObject"
+      ]
+      Resource = "${aws_s3_bucket.site.arn}/private/*"
+    }]
+  })
+}
+
+data "archive_file" "lambda_zip" {
+  type        = "zip"
+  source_dir  = "${path.module}/../backend/lambda_package"
+  output_path = "${path.module}/../backend/lambda_function.zip"
+}
+
+resource "aws_lambda_function" "backend" {
+  filename         = data.archive_file.lambda_zip.output_path
+  function_name    = replace("${var.domain_name}-backend", ".", "-")
+  role            = aws_iam_role.lambda_backend.arn
+  handler         = "lambda_handler.lambda_handler"
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
+  runtime         = "python3.11"
+  timeout         = 30
+
+  environment {
+    variables = {
+      RECAPTCHA_API_KEY    = var.recaptcha_api_key
+      RECAPTCHA_PROJECT_ID = var.recaptcha_project_id
+      RECAPTCHA_SITE_KEY   = var.recaptcha_site_key
+      SECRET_KEY           = var.lambda_secret_key
+      RESUME_S3_BUCKET     = aws_s3_bucket.site.id
+      RESUME_S3_KEY        = aws_s3_object.resume_pdf.key
+      ALLOWED_ORIGIN       = "https://${var.domain_name}"
+    }
+  }
+}
+
+resource "aws_lambda_function_url" "backend" {
+  function_name      = aws_lambda_function.backend.function_name
+  authorization_type = "NONE"
+
+  cors {
+    allow_origins     = ["https://${var.domain_name}", "https://www.${var.domain_name}"]
+    allow_methods     = ["GET", "POST"]
+    allow_headers     = ["content-type"]
+    max_age          = 86400
+  }
+}
+
