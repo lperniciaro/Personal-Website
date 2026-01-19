@@ -70,25 +70,8 @@ def verify_signed_token(token):
     except:
         return False
 
-def cors_headers():
-    """Return CORS headers."""
-    return {
-        'Access-Control-Allow-Origin': os.environ.get('ALLOWED_ORIGIN', 'https://lucianp.com'),
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Max-Age': '86400'
-    }
-
 def lambda_handler(event, context):
     """Main Lambda handler with routing."""
-    
-    # Handle OPTIONS preflight
-    if event.get('requestContext', {}).get('http', {}).get('method') == 'OPTIONS':
-        return {
-            'statusCode': 200,
-            'headers': cors_headers(),
-            'body': ''
-        }
     
     # Get the path
     path = event.get('rawPath', '/')
@@ -104,7 +87,6 @@ def lambda_handler(event, context):
             if not token or not user_action:
                 return {
                     'statusCode': 400,
-                    'headers': cors_headers(),
                     'body': json.dumps({'success': False, 'message': 'Missing token or user action'})
                 }
             
@@ -114,7 +96,6 @@ def lambda_handler(event, context):
             if "error" in verification_result:
                 return {
                     'statusCode': verification_result.get('status_code', 500),
-                    'headers': cors_headers(),
                     'body': json.dumps({'success': False, 'error': verification_result['error']})
                 }
             
@@ -127,7 +108,6 @@ def lambda_handler(event, context):
                 
                 return {
                     'statusCode': 200,
-                    'headers': cors_headers(),
                     'body': json.dumps({
                         'success': True,
                         'downloadToken': download_token,
@@ -137,7 +117,6 @@ def lambda_handler(event, context):
             else:
                 return {
                     'statusCode': 403,
-                    'headers': cors_headers(),
                     'body': json.dumps({
                         'success': False,
                         'message': 'Verification failed or low score',
@@ -148,7 +127,6 @@ def lambda_handler(event, context):
         except Exception as e:
             return {
                 'statusCode': 500,
-                'headers': cors_headers(),
                 'body': json.dumps({'success': False, 'message': str(e)})
             }
     
@@ -162,7 +140,6 @@ def lambda_handler(event, context):
             if not token or not verify_signed_token(token):
                 return {
                     'statusCode': 403,
-                    'headers': cors_headers(),
                     'body': json.dumps({
                         'success': False,
                         'message': 'Unauthorized access. Invalid or expired token.'
@@ -186,7 +163,6 @@ def lambda_handler(event, context):
                 return {
                     'statusCode': 302,
                     'headers': {
-                        **cors_headers(),
                         'Location': presigned_url
                     },
                     'body': ''
@@ -194,7 +170,6 @@ def lambda_handler(event, context):
             except ClientError as e:
                 return {
                     'statusCode': 500,
-                    'headers': cors_headers(),
                     'body': json.dumps({
                         'success': False,
                         'message': f'Failed to generate download link: {str(e)}'
@@ -204,13 +179,11 @@ def lambda_handler(event, context):
         except Exception as e:
             return {
                 'statusCode': 500,
-                'headers': cors_headers(),
                 'body': json.dumps({'success': False, 'message': str(e)})
             }
     
     # Default: 404
     return {
         'statusCode': 404,
-        'headers': cors_headers(),
         'body': json.dumps({'success': False, 'message': 'Not found'})
     }
