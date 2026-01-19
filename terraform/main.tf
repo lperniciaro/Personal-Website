@@ -78,6 +78,27 @@ resource "aws_cloudfront_distribution" "site" {
     origin_access_control_id = aws_cloudfront_origin_access_control.site.id
   }
 
+  # Special behavior for .well-known paths (serve directly, no React routing)
+  ordered_cache_behavior {
+    path_pattern           = ".well-known/*"
+    target_origin_id       = "s3-${aws_s3_bucket.site.id}"
+    viewer_protocol_policy = "redirect-to-https"
+    compress               = true
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods         = ["GET", "HEAD"]
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+
+    min_ttl     = 0
+    default_ttl = 86400
+    max_ttl     = 31536000
+  }
+
   default_cache_behavior {
     target_origin_id       = "s3-${aws_s3_bucket.site.id}"
     viewer_protocol_policy = "redirect-to-https"
