@@ -8,6 +8,19 @@ import './Cars.css';
 const Cars = () => {
   const [posts] = useState([
     {
+      title: 'Crown Vic Gets Some Fresh Paint',
+      date: 'Start Date: Sept 4, 2024',
+      datePosted: 'Date Posted: Jan 19, 2026',
+      description: `Fresh paint. Fresh dreams.`,
+      content: `I 'splurged' on the Maaco paint job special. Total cost was around $1400. I'm extremely happy with the results. \
+      Just don't look too closely ;).`,
+      images: [
+        'Pics/Cars/CrownVicFreshPaint.jpg',
+        'Pics/Cars/CrownVicFreshPaint2.jpg',
+        'Pics/Cars/oklahoma8.jpg'
+      ]
+    },
+    {
       title: '2020 SCCA Dirtfish Rallycross National Championship',
       date: 'Start Date: Aug 15-16, 2020',
       datePosted: 'Date Posted: Nov 30, 2024',
