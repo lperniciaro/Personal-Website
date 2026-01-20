@@ -273,13 +273,27 @@ resource "aws_iam_role_policy" "lambda_s3_resume" {
 
   policy = jsonencode({
     Version = "2012-10-17"
-    Statement = [{
-      Effect = "Allow"
-      Action = [
-        "s3:GetObject"
-      ]
-      Resource = "${aws_s3_bucket.site.arn}/private/*"
-    }]
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject"
+        ]
+        Resource = "${aws_s3_bucket.site.arn}/private/*"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:ListBucket"
+        ]
+        Resource = aws_s3_bucket.site.arn
+        Condition = {
+          StringLike = {
+            "s3:prefix" = ["private/*"]
+          }
+        }
+      }
+    ]
   })
 }
 
