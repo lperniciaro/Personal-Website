@@ -20,6 +20,7 @@ import Datadog from './components/pages/project pages/Datadog'
 import PowerlineAI from './components/pages/project pages/PowerlineAI'
 import GamingMouse from './components/pages/project pages/HeatedMouse'
 import RecaptchaProject from './components/pages/project pages/RecaptchaProject'
+import MicroservicesMigration from './components/pages/project pages/MicroservicesMigration'
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path='/powerlineAI' component={PowerlineAI} />
           <Route path='/gamingMouse' component={GamingMouse} />
           <Route path='/recaptchaProject' component={RecaptchaProject} />
+          <Route path='/microservices-migration' component={MicroservicesMigration} />
         </Switch>
       </Router>
     </>

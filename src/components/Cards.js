@@ -7,8 +7,15 @@ function Cards() {
         <div className='cards'>
             <h1>PROJECTS</h1>
             <div className="cards__container">
-            <div className="cards__wrapper">
+
+                <div className="cards__wrapper">
                     <ul className="cards__items">
+                    <CardItem
+                            src='Pics/Migration_diagram.png'
+                            text="EC2 to Serverless Microservices: AI-Assisted Migration"
+                            label='Cloud Cost Optimization (92% savings)'
+                            path='/microservices-migration'
+                        />
 
                         <CardItem
                             src='Pics/reCAPTCHA-enterprise.png'
