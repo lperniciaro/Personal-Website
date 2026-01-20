@@ -23,6 +23,10 @@ export default function RecaptchaProject() {
                         </div>
                     </div>
                 </div>
+                <div className='smallcard'>Update Jan 2026: I have since migrated the server to serverless shown in my latest project post. 
+                    The diagram above is deprecated as the backend is now served via Lambda functions.
+
+                </div>
                 
             </div>
         </div>
