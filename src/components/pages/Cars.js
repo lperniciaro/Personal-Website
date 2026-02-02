@@ -21,6 +21,46 @@ const Cars = () => {
       ]
     },
     {
+      title: 'Crown Vic Limited Slip Diff Install',
+      date: 'Start Date: April 11, 2021',
+      datePosted: 'Date Posted: Feb 2, 2026',
+      description: `LSD! LSD! LSD!`,
+      content: `LSD is key for superb drifting. Here's the story of how I got it done. I order all the parts after some \
+      basic research, not really knowing what I'm getting into. But overall the process wasn't that bad. \
+      The sketchy part is where I needed to use a bearing press to put on new carrier bearings, since it would be \
+      impossible to reuse the old ones. I do not have a bearing press. Broke college student Lucian decides to \
+      call every mechanic in town asking to borrow their press. Well who would have guessed that plan would actually work? \
+      \
+      I met a Mobile Mechanic at his shop, and he basically did all the work for me lol. He was super cool and didn't accept \
+      payment. I suppose he was just happy to help a couple of gearheads who just didn't have the resources. His name was Chet. \
+      His true passion was building show truck cars. He showed us the one he had in the back. It was super nice. \
+      I can thank EricTheCarGuy on YouTube for my successful install. With a little trial and error I was able to successfully \
+      install the LSD.\
+      \
+      I purchased an OEM LSD carrier from adtr.net, and by following all procedure and specifications, the diff produces no \
+      noticable whine or binding in corners, and absolutely rips at the track.`,
+      images: [
+        'Pics/Cars/lsd2.jpg',
+        'Pics/Cars/lsd1.jpg',
+        'Pics/Cars/driftlsd.jpg'
+      ],
+      videos: [
+        { type: 'local', src: 'Vids/areyouhavingfunyet.mp4', vertical: true },
+        { type: 'local', src: 'Vids/backlash.mp4', vertical: true },
+      ]
+    },
+    {
+      title: 'The Texas Snowpocalypse',
+      date: 'Start Date: Jan 10, 2021',
+      datePosted: 'Date Posted: Feb 2, 2026',
+      description: `An Opportunity Seized.`,
+      content: `I just got back from a trip to Durango Co for a ski trip with some friends. By a twist of events, I find \
+      myself with more snow in College Station, TX when I return.`,
+      videos: [
+        { type: 'local', src: 'Vids/Snowpacolypse.mp4' },
+      ]
+    },
+    {
       title: '2020 SCCA Dirtfish Rallycross National Championship',
       date: 'Start Date: Aug 15-16, 2020',
       datePosted: 'Date Posted: Nov 30, 2024',
@@ -272,7 +312,7 @@ const Cars = () => {
               {post.videos.map((video, vidIndex) => (
                 <div key={vidIndex}>
                   {video.type === 'local' ? (
-                    <video controls className="carousel-video">
+                    <video controls className={video.vertical ? "carousel-video-vertical" : "carousel-video"}>
                       <source src={video.src} type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
