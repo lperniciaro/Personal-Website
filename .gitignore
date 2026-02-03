@@ -10,3 +10,5 @@ backend/lambda_package/
 backend/lambda_function.zip
 terraform/secrets.auto.tfvars
 .env.local
+*.md
+!README.md
