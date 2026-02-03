@@ -337,3 +337,79 @@ resource "aws_lambda_function_url" "backend" {
   }
 }
 
+# CloudWatch RUM App Monitor
+resource "aws_rum_app_monitor" "site" {
+  name   = replace(var.domain_name, ".", "-")
+  domain = var.domain_name
+
+  app_monitor_configuration {
+    allow_cookies      = true
+    enable_xray        = false
+    session_sample_rate = 1.0  # 100% of sessions (we'll stay under free tier)
+    
+    telemetries = [
+      "errors",
+      "performance",
+      "http"
+    ]
+  }
+
+  cw_log_enabled = true
+}
+
+# Identity pool for RUM (allows website to send data to CloudWatch)
+resource "aws_cognito_identity_pool" "rum" {
+  identity_pool_name               = replace("${var.domain_name}-rum", ".", "-")
+  allow_unauthenticated_identities = true
+}
+
+# IAM role for unauthenticated RUM users
+resource "aws_iam_role" "rum_unauthenticated" {
+  name = replace("${var.domain_name}-rum-unauth", ".", "-")
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Principal = {
+        Federated = "cognito-identity.amazonaws.com"
+      }
+      Action = "sts:AssumeRoleWithWebIdentity"
+      Condition = {
+        StringEquals = {
+          "cognito-identity.amazonaws.com:aud" = aws_cognito_identity_pool.rum.id
+        }
+        "ForAnyValue:StringLike" = {
+          "cognito-identity.amazonaws.com:amr" = "unauthenticated"
+        }
+      }
+    }]
+  })
+}
+
+# Policy allowing RUM data submission
+resource "aws_iam_role_policy" "rum_put_events" {
+  name = "rum-put-events"
+  role = aws_iam_role.rum_unauthenticated.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Action = [
+        "rum:PutRumEvents"
+      ]
+      Resource = aws_rum_app_monitor.site.arn
+    }]
+  })
+}
+
+# Attach role to identity pool
+resource "aws_cognito_identity_pool_roles_attachment" "rum" {
+  identity_pool_id = aws_cognito_identity_pool.rum.id
+
+  roles = {
+    unauthenticated = aws_iam_role.rum_unauthenticated.arn
+  }
+}
+

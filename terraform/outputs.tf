@@ -35,3 +35,18 @@ output "lambda_function_url" {
   description = "Lambda function URL for backend API."
 }
 
+output "rum_app_monitor_id" {
+  value       = aws_rum_app_monitor.site.id
+  description = "CloudWatch RUM App Monitor ID."
+}
+
+output "rum_identity_pool_id" {
+  value       = aws_cognito_identity_pool.rum.id
+  description = "Cognito Identity Pool ID for RUM."
+}
+
+output "rum_guest_role_arn" {
+  value       = aws_iam_role.rum_unauthenticated.arn
+  description = "IAM role ARN for unauthenticated RUM users."
+}
+

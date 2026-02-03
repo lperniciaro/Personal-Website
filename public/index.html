@@ -33,6 +33,25 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Lucian Perniciaro IV</title>
+    
+    <!-- AWS CloudWatch RUM -->
+    <script>
+      (function(n,i,v,r,s,c,x,z){x=window.AwsRumClient={q:[],n:n,i:i,v:v,r:r,c:c};window[n]=function(c,p){x.q.push({c:c,p:p});};z=document.createElement('script');z.async=true;z.src=s;document.head.insertBefore(z,document.head.getElementsByTagName('script')[0]);})(
+        'cwr',
+        '%REACT_APP_RUM_APP_MONITOR_ID%',
+        '1.0.0',
+        '%REACT_APP_AWS_REGION%',
+        'https://client.rum.us-east-1.amazonaws.com/1.x/cwr.js',
+        {
+          sessionSampleRate: 1,
+          identityPoolId: '%REACT_APP_RUM_IDENTITY_POOL_ID%',
+          endpoint: 'https://dataplane.rum.%REACT_APP_AWS_REGION%.amazonaws.com',
+          telemetries: ['errors','performance','http'],
+          allowCookies: true,
+          enableXRay: false
+        }
+      );
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

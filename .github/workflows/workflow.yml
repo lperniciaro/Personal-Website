@@ -44,6 +44,9 @@ jobs:
         env:
           REACT_APP_LAMBDA_URL: ${{ secrets.REACT_APP_LAMBDA_URL }}
           REACT_APP_RECAPTCHA_SITE_KEY: ${{ secrets.REACT_APP_RECAPTCHA_SITE_KEY }}
+          REACT_APP_RUM_APP_MONITOR_ID: ${{ secrets.REACT_APP_RUM_APP_MONITOR_ID }}
+          REACT_APP_RUM_IDENTITY_POOL_ID: ${{ secrets.REACT_APP_RUM_IDENTITY_POOL_ID }}
+          REACT_APP_AWS_REGION: ${{ secrets.AWS_REGION }}
         run: npm run build
       
       - name: Configure AWS credentials (OIDC)
