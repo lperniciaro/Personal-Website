@@ -46,6 +46,7 @@ jobs:
           REACT_APP_RECAPTCHA_SITE_KEY: ${{ secrets.REACT_APP_RECAPTCHA_SITE_KEY }}
           REACT_APP_RUM_APP_MONITOR_ID: ${{ secrets.REACT_APP_RUM_APP_MONITOR_ID }}
           REACT_APP_RUM_IDENTITY_POOL_ID: ${{ secrets.REACT_APP_RUM_IDENTITY_POOL_ID }}
+          REACT_APP_RUM_GUEST_ROLE_ARN: ${{ secrets.REACT_APP_RUM_GUEST_ROLE_ARN }}
           REACT_APP_AWS_REGION: ${{ secrets.AWS_REGION }}
         run: npm run build
       

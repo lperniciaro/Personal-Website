@@ -343,9 +343,11 @@ resource "aws_rum_app_monitor" "site" {
   domain = var.domain_name
 
   app_monitor_configuration {
-    allow_cookies      = true
-    enable_xray        = false
+    allow_cookies       = true
+    enable_xray         = false
     session_sample_rate = 1.0  # 100% of sessions (we'll stay under free tier)
+    identity_pool_id    = aws_cognito_identity_pool.rum.id
+    guest_role_arn      = aws_iam_role.rum_unauthenticated.arn
     
     telemetries = [
       "errors",
@@ -355,6 +357,12 @@ resource "aws_rum_app_monitor" "site" {
   }
 
   cw_log_enabled = true
+  
+  depends_on = [
+    aws_cognito_identity_pool.rum,
+    aws_cognito_identity_pool_roles_attachment.rum,
+    aws_iam_role_policy.rum_put_events
+  ]
 }
 
 # Identity pool for RUM (allows website to send data to CloudWatch)
@@ -399,7 +407,7 @@ resource "aws_iam_role_policy" "rum_put_events" {
       Action = [
         "rum:PutRumEvents"
       ]
-      Resource = aws_rum_app_monitor.site.arn
+      Resource = "arn:aws:rum:${var.aws_region}:${data.aws_caller_identity.current.account_id}:appmonitor/${replace(var.domain_name, ".", "-")}"
     }]
   })
 }
