@@ -40,13 +40,13 @@
         'cwr',
         '%REACT_APP_RUM_APP_MONITOR_ID%',
         '1.0.0',
-        '%REACT_APP_AWS_REGION%',
-        'https://client.rum.%REACT_APP_AWS_REGION%.amazonaws.com/1.x/cwr.js',
+        'us-west-2',
+        'https://client.rum.us-east-1.amazonaws.com/1.x/cwr.js',
         {
           sessionSampleRate: 1,
           identityPoolId: '%REACT_APP_RUM_IDENTITY_POOL_ID%',
           guestRoleArn: '%REACT_APP_RUM_GUEST_ROLE_ARN%',
-          endpoint: 'https://dataplane.rum.%REACT_APP_AWS_REGION%.amazonaws.com',
+          endpoint: 'https://dataplane.rum.us-west-2.amazonaws.com',
           telemetries: ['errors','performance','http'],
           allowCookies: true,
           enableXRay: false
