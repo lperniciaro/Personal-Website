@@ -369,6 +369,7 @@ resource "aws_rum_app_monitor" "site" {
 resource "aws_cognito_identity_pool" "rum" {
   identity_pool_name               = replace("${var.domain_name}-rum", ".", "-")
   allow_unauthenticated_identities = true
+  allow_classic_flow               = true  # Required for RUM web client
 }
 
 # IAM role for unauthenticated RUM users
@@ -407,7 +408,7 @@ resource "aws_iam_role_policy" "rum_put_events" {
       Action = [
         "rum:PutRumEvents"
       ]
-      Resource = "arn:aws:rum:${var.aws_region}:${data.aws_caller_identity.current.account_id}:appmonitor/${replace(var.domain_name, ".", "-")}"
+      Resource = "*"
     }]
   })
 }

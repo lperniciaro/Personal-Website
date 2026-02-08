@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import '../../App.css';
 import '../Cards.css';
@@ -6,6 +6,7 @@ import '../HeroSection.css';
 import './Cars.css';
 
 const Cars = () => {
+  const [selectedPost, setSelectedPost] = useState(null);
   const [posts] = useState([
     {
       title: 'Crown Vic Gets Some Fresh Paint',
@@ -18,6 +19,24 @@ const Cars = () => {
         'Pics/Cars/CrownVicFreshPaint.jpg',
         'Pics/Cars/CrownVicFreshPaint2.jpg',
         'Pics/Cars/oklahoma8.jpg'
+      ]
+    },
+    {
+      title: 'The Van',
+      date: 'Start Date: Jan 1, 2022',
+      datePosted: 'Date Posted: Feb 7, 2026',
+      description: `A new project car`,
+      content: `This van was sitting on a good friends property. It was a one owner van, originally purchased new in 2001. \
+      Long story short, "If you can fix it, you can have it". I took this as a personal challange (also I really wanted a \
+      sick conversion van). Little did I know the can of worms I'd be getting myself into. The van wasn't running. \
+      All it took was a fuel pump to make it driveable to get it home, but oh boy she did not run well. It was misfiring \
+      very badly, but still made it home shaking violently.`,
+      images: [
+        'Pics/Cars/thevan.JPG',
+        'Pics/Cars/thevan2.JPG'
+      ],
+      videos: [
+        { type: 'local', src: 'Pics/Cars/thevan.mp4', vertical: true },
       ]
     },
     {
@@ -259,6 +278,20 @@ const Cars = () => {
 
   ]);
 
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (selectedPost) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function to reset overflow when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedPost]);
+
   // Custom Arrow components to remove text
   const CustomPrevArrow = (props) => {
     const { onClick } = props;
@@ -298,53 +331,126 @@ const Cars = () => {
   };
 
   return (
-    <div>
-      <h1>Car Projects</h1>
-      {posts.map((post, index) => (
-        <div key={index} className="post">
-          <h2>{post.title}</h2>
-          <div className="date-container">
-            <span className="start-date">{post.date}</span>
-            <span className="date-posted">{post.datePosted}</span>
-          </div>
-          {post.videos && post.videos.length > 0 && (
-            <div>
-              {post.videos.map((video, vidIndex) => (
-                <div key={vidIndex}>
-                  {video.type === 'local' ? (
-                    <video controls className={video.vertical ? "carousel-video-vertical" : "carousel-video"}>
-                      <source src={video.src} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  ) : (
-                    <iframe
-                      width="100%"
-                      height="500"
-                      src={video.src}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      title={`video-${vidIndex}`}
-                    ></iframe>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-          {post.images && post.images.length > 0 && (
-            <Slider {...settings}>
-              {post.images.map((image, imgIndex) => (
-                <div key={imgIndex}>
-                  <img src={image} alt={`Slide ${imgIndex + 1}`} className="carousel-image" />
-                </div>
-              ))}
-            </Slider>
-          )}
-          <p>{post.description}</p>
-          {/* Render the content with proper paragraph breaks */}
-          <div>{formatContent(post.content)}</div>
+    <div className='cars-page'>
+      <h1>CAR PROJECTS</h1>
+      <div className="cards__container">
+        <div className="cards__wrapper">
+          {/* Split posts into rows of 3 */}
+          {Array.from({ length: Math.ceil(posts.length / 3) }, (_, rowIndex) => (
+            <ul className="cards__items" key={rowIndex}>
+              {posts.slice(rowIndex * 3, rowIndex * 3 + 3).map((post, index) => {
+                const getCardMedia = () => {
+                  if (post.images && post.images.length > 0) {
+                    return { type: 'image', src: post.images[0] };
+                  } else if (post.videos && post.videos.length > 0) {
+                    const video = post.videos[0];
+                    if (video.type === 'youtube') {
+                      // Extract YouTube video ID and use thumbnail
+                      const videoId = video.src.split('/').pop().split('?')[0];
+                      return { type: 'image', src: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` };
+                    } else {
+                      // For local videos, use video element
+                      return { type: 'video', src: video.src };
+                    }
+                  }
+                  return { type: 'image', src: 'Pics/Cars/default.jpg' };
+                };
+
+                const media = getCardMedia();
+
+                return (
+                  <li className="cards__item" key={rowIndex * 3 + index} onClick={() => setSelectedPost(post)}>
+                    <div className="cards__item__link" style={{ cursor: 'pointer' }}>
+                      <figure className="cards__item__pic-wrap" data-category={post.date.split(':')[1].trim()}>
+                        {media.type === 'image' ? (
+                          <img 
+                            src={media.src} 
+                            alt={post.title} 
+                            className="cards__item__img"
+                          />
+                        ) : (
+                          <video 
+                            src={media.src}
+                            className="cards__item__img"
+                            muted
+                            style={{ objectFit: 'cover' }}
+                          />
+                        )}
+                      </figure>
+                      <div className="cards__item__info">
+                        <h5 className="cards__item__text">{post.title}</h5>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          ))}
         </div>
-      ))}
+      </div>
+
+      {/* Modal/Overlay for viewing full project */}
+      {selectedPost && (
+        <div className="car-modal-overlay" onClick={() => setSelectedPost(null)}>
+          <div className="car-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="car-modal-close" onClick={() => setSelectedPost(null)}>×</button>
+            <div className="post">
+              <h2>{selectedPost.title}</h2>
+              <div className="date-container">
+                <span className="start-date">{selectedPost.date}</span>
+                <span className="date-posted">{selectedPost.datePosted}</span>
+              </div>
+              {selectedPost.videos && selectedPost.videos.length > 0 && (
+                <div>
+                  {selectedPost.videos.map((video, vidIndex) => (
+                    <div key={vidIndex}>
+                      {video.type === 'local' ? (
+                        <video 
+                          controls 
+                          className={video.vertical ? "carousel-video-vertical" : "carousel-video"}
+                          style={video.vertical ? { 
+                            maxWidth: '350px', 
+                            maxHeight: '450px', 
+                            width: 'auto', 
+                            height: 'auto',
+                            display: 'block',
+                            margin: '20px auto',
+                            objectFit: 'contain'
+                          } : {}}
+                        >
+                          <source src={video.src} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <iframe
+                          width="100%"
+                          height="500"
+                          src={video.src}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          title={`video-${vidIndex}`}
+                        ></iframe>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+              {selectedPost.images && selectedPost.images.length > 0 && (
+                <Slider {...settings}>
+                  {selectedPost.images.map((image, imgIndex) => (
+                    <div key={imgIndex}>
+                      <img src={image} alt={`Slide ${imgIndex + 1}`} className="carousel-image" />
+                    </div>
+                  ))}
+                </Slider>
+              )}
+              <p>{selectedPost.description}</p>
+              <div>{formatContent(selectedPost.content)}</div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
