@@ -20,6 +20,13 @@ resource "aws_s3_object" "resume_pdf" {
   source       = "${path.module}/../assets/ResumeLucianPerniciaro.pdf"
   content_type = "application/pdf"
   etag         = filemd5("${path.module}/../assets/ResumeLucianPerniciaro.pdf")
+
+  # The compiled PDF is now uploaded by the GitHub Actions workflow in the
+  # Resume repo (lperniciaro/Resume). Ignore content drift so a terraform
+  # apply doesn't overwrite it with the stale copy in assets/.
+  lifecycle {
+    ignore_changes = [source, etag, content_type]
+  }
 }
 
 resource "aws_s3_bucket" "site" {
@@ -194,7 +201,10 @@ data "aws_iam_policy_document" "github_assume_role" {
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_repo}:*"]
+      values = concat(
+        ["repo:${var.github_repo}:*"],
+        [for r in var.additional_github_repos : "repo:${r}:*"]
+      )
     }
   }
 }

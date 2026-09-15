@@ -18,6 +18,12 @@ variable "github_repo" {
   description = "GitHub repo in owner/name form, e.g. LP/Personal-Website."
 }
 
+variable "additional_github_repos" {
+  type        = list(string)
+  description = "Extra GitHub repos (owner/name) allowed to assume the GitHub Actions role, e.g. the Resume repo that uploads the compiled PDF."
+  default     = []
+}
+
 variable "create_www" {
   type        = bool
   description = "Whether to create www.<domain> alias and cert SAN."
